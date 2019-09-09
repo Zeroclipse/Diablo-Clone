@@ -10,6 +10,10 @@ public class Check_Inventory : MonoBehaviour
     {
         inventoryScreen = GameObject.Find("Inventory Screen");
         GetComponent<Player_Input>().OnInventoryPress += OpenInventory;
+    }
+
+    private void Start()
+    {
         inventoryScreen.SetActive(false);
     }
 
