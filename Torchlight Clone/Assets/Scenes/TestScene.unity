@@ -272,7 +272,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1d6f3551c706a045a71c634b1be5eb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  equipSelected: 0
+  name: 0
+  tint: 0
+  equip: {fileID: 0}
+  tempSprite: {fileID: 0}
+  tempColor: {r: 0, g: 0, b: 0, a: 0}
+  Inventory: []
+  Equipment: []
+  steal: {fileID: 0}
+  selectSound: {fileID: 8300000, guid: 191de95a77b379f468859bd64c81566a, type: 3}
 --- !u!82 &45849445
 AudioSource:
   m_ObjectHideFlags: 0
@@ -381,6 +389,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1539f654b903099428e989892aad1c33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  randomNumber: 0
   Inventory:
   - {fileID: 1333634660}
   - {fileID: 1643668488}
@@ -709,7 +718,7 @@ MonoBehaviour:
         m_MethodName: _SelectEquippedItem
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 270235104}
+          m_ObjectArgument: {fileID: 1304689802}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -847,7 +856,7 @@ GameObject:
   - component: {fileID: 314001249}
   - component: {fileID: 314001248}
   m_Layer: 5
-  m_Name: Image
+  m_Name: 7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1081,7 +1090,7 @@ MonoBehaviour:
         m_MethodName: _SelectEquippedItem
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 448679857}
+          m_ObjectArgument: {fileID: 1614110730}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -1408,7 +1417,7 @@ GameObject:
   - component: {fileID: 902431756}
   - component: {fileID: 902431755}
   m_Layer: 5
-  m_Name: Image
+  m_Name: 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1637,7 +1646,7 @@ GameObject:
   - component: {fileID: 943883023}
   - component: {fileID: 943883022}
   m_Layer: 5
-  m_Name: Image
+  m_Name: 6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1659,7 +1668,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.05, y: 0.05}
   m_AnchorMax: {x: 0.95, y: 0.95}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.0000038146973, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &943883022
@@ -1787,7 +1796,7 @@ MonoBehaviour:
         m_MethodName: _SelectEquippedItem
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 947468968}
+          m_ObjectArgument: {fileID: 1641781979}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -2079,7 +2088,7 @@ MonoBehaviour:
         m_MethodName: _SelectEquippedItem
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 1112222762}
+          m_ObjectArgument: {fileID: 2035871787}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -2292,7 +2301,7 @@ MonoBehaviour:
         m_MethodName: _SelectEquippedItem
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 1197265304}
+          m_ObjectArgument: {fileID: 902431755}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -2501,7 +2510,7 @@ MonoBehaviour:
         m_MethodName: _SelectEquippedItem
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 1279707242}
+          m_ObjectArgument: {fileID: 943883022}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -2560,7 +2569,7 @@ GameObject:
   - component: {fileID: 1304689803}
   - component: {fileID: 1304689802}
   m_Layer: 5
-  m_Name: Image
+  m_Name: 8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2714,7 +2723,7 @@ GameObject:
   - component: {fileID: 1333634661}
   - component: {fileID: 1333634660}
   m_Layer: 5
-  m_Name: Image
+  m_Name: 0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3071,7 +3080,7 @@ MonoBehaviour:
         m_MethodName: _SelectEquippedItem
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 1481953208}
+          m_ObjectArgument: {fileID: 1643668488}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -3632,7 +3641,7 @@ GameObject:
   - component: {fileID: 1614110731}
   - component: {fileID: 1614110730}
   m_Layer: 5
-  m_Name: Image
+  m_Name: 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3782,7 +3791,7 @@ MonoBehaviour:
         m_MethodName: _SelectEquippedItem
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 1626762282}
+          m_ObjectArgument: {fileID: 1333634660}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -3841,7 +3850,7 @@ GameObject:
   - component: {fileID: 1641781980}
   - component: {fileID: 1641781979}
   m_Layer: 5
-  m_Name: Image
+  m_Name: 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3863,7 +3872,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.05, y: 0.05}
   m_AnchorMax: {x: 0.95, y: 0.95}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.0000038146973, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1641781979
@@ -3916,7 +3925,7 @@ GameObject:
   - component: {fileID: 1643668489}
   - component: {fileID: 1643668488}
   m_Layer: 5
-  m_Name: Image
+  m_Name: 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4527,7 +4536,7 @@ GameObject:
   - component: {fileID: 2035871788}
   - component: {fileID: 2035871787}
   m_Layer: 5
-  m_Name: Image
+  m_Name: 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4752,7 +4761,7 @@ MonoBehaviour:
         m_MethodName: _SelectEquippedItem
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 2097067827}
+          m_ObjectArgument: {fileID: 314001248}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
