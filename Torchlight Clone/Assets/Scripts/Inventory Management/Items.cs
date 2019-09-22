@@ -15,9 +15,9 @@ public class Items
     }
 
 
-    public void EnterItems(int itement)
+    public void EnterItems(int itement, int tintent)
     {
         item = itement;
-        tint = Random.Range(1, 5);
+        tint = tintent;
     }
 }

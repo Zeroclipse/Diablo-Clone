@@ -26,93 +26,99 @@ public class SetupInventory : MonoBehaviour
             itemList.Add(newItem);
         }
 
-        randomNumber = Random.Range(1, 5);
+        tint = Random.Range(1, 5);
         //Finish
+        itemList[0].EnterItems(1, tint);
+        itemList[1].EnterItems(2, tint);
+        itemList[2].EnterItems(3, tint);
+        itemList[3].EnterItems(4, tint);
+        itemList[4].EnterItems(5, tint);
+        randomNumber = Random.Range(1, 5);
         if (randomNumber == 1)
         {
             //Use Asset Database
-            Inventory[0].sprite = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/Images/Helmets/brutal-helm.png", typeof(Sprite));
+            Inventory[0].sprite = Resources.Load<Sprite>("Images/Helmets/brutal-helm");
         }
 
         if (randomNumber == 2)
         {
             //Use Asset Database
-            Inventory[0].sprite = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/Images/Helmets/spartan-helmet.png", typeof(Sprite));
+            Inventory[0].sprite = Resources.Load<Sprite>("Images/Helmets/spartan-helmet");
         }
 
         if (randomNumber == 3)
         {
             //Use Asset Database
-            Inventory[0].sprite = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/Images/Helmets/turban.png", typeof(Sprite));
+            Inventory[0].sprite = Resources.Load<Sprite>("Images/Helmets/turban");
         }
 
         if (randomNumber == 4)
         {
             //Use Asset Database
-            Inventory[0].sprite = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/Images/Helmets/viking-helmet.png", typeof(Sprite));
+            Inventory[0].sprite = Resources.Load<Sprite>("Images/Helmets/viking-helmet");
         }
             randomNumber = Random.Range(1, 4);
             if (randomNumber == 1)
             {
                 //Use Asset Database
-                Inventory[1].sprite = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/Images/Chest/pirate-coat.png", typeof(Sprite));
+                Inventory[1].sprite = Resources.Load<Sprite>("Images/Chest/pirate-coat");
             }
 
             if (randomNumber == 2)
             {
                 //Use Asset Database
-                Inventory[1].sprite = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/Images/Chest/polo-shirt.png", typeof(Sprite));
+                Inventory[1].sprite = Resources.Load<Sprite>("Images/Chest/polo-shirt");
             }
 
             if (randomNumber == 3)
             {
                 //Use Asset Database
-                Inventory[1].sprite = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/Images/Chest/sleeveless-jacket.png", typeof(Sprite));
+                Inventory[1].sprite = Resources.Load<Sprite>("Images/Chest/sleeveless-jacket");
             }
 
             randomNumber = Random.Range(1, 3);
             if (randomNumber == 1)
             {
                 //Use Asset Database
-                Inventory[2].sprite = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/Images/Pants/shorts.png", typeof(Sprite));
+                Inventory[2].sprite = Resources.Load<Sprite>("Images/Pants/shorts");
             }
 
             if (randomNumber == 2)
             {
                 //Use Asset Database
-                Inventory[2].sprite = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/Images/Pants/wooden-pegleg.png", typeof(Sprite));
+                Inventory[2].sprite = Resources.Load<Sprite>("Images/Pants/wooden-pegleg");
             }
 
             randomNumber = Random.Range(1, 3);
             if (randomNumber == 1)
             {
                 //Use Asset Database
-                Inventory[3].sprite = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/Images/Shields/police-badge.png", typeof(Sprite));
+                Inventory[3].sprite = Resources.Load<Sprite>("Images/Shields/police-badge");
             }
 
             if (randomNumber == 2)
             {
                 //Use Asset Database
-                Inventory[3].sprite = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/Images/Shields/templar-shield.png", typeof(Sprite));
+                Inventory[3].sprite = Resources.Load<Sprite>("Images/Shields/templar-shield");
             }
 
             randomNumber = Random.Range(1, 4);
             if (randomNumber == 1)
             {
                 //Use Asset Database
-                Inventory[4].sprite = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/Images/Weapons/baseball-bat.png", typeof(Sprite));
+                Inventory[4].sprite = Resources.Load<Sprite>("Images/Weapons/baseball-bat");
             }
 
             if (randomNumber == 2)
             {
                 //Use Asset Database
-                Inventory[4].sprite = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/Images/Weapons/crossbow.png", typeof(Sprite));
+                Inventory[4].sprite = Resources.Load<Sprite>("Images/Weapons/crossbow");
             }
 
             if (randomNumber == 3)
             {
                 //Use Asset Database
-                Inventory[4].sprite = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/Images/Weapons/two-handed-sword.png", typeof(Sprite));
+                Inventory[4].sprite = Resources.Load<Sprite>("Images/Weapons/two-handed-sword");
             }
             Inventory[0].color = Color.red;
             Inventory[1].color = Color.blue;
@@ -131,25 +137,25 @@ public class SetupInventory : MonoBehaviour
         //        if (randomNumber == 1)
         //        {
         //            //Use Asset Database
-        //            Inventory[i].sprite = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/Images/Helmets/brutal-helm.png", typeof(Sprite));
+        //            Inventory[i].sprite = Resources.Load<Sprite>("Images/Helmets/brutal-helm");
         //        }
 
         //        if (randomNumber == 2)
         //        {
         //            //Use Asset Database
-        //            Inventory[i].sprite = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/Images/Helmets/spartan-helmet.png", typeof(Sprite));
+        //            Inventory[i].sprite = Resources.Load<Sprite>("Images/Helmets/spartan-helmet");
         //        }
 
         //        if (randomNumber == 3)
         //        {
         //            //Use Asset Database
-        //            Inventory[i].sprite = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/Images/Helmets/turban.png", typeof(Sprite));
+        //            Inventory[i].sprite = Resources.Load<Sprite>("Images/Helmets/turban");
         //        }
 
         //        if (randomNumber == 4)
         //        {
         //            //Use Asset Database
-        //            Inventory[i].sprite = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/Images/Helmets/viking-helmet.png", typeof(Sprite));
+        //            Inventory[i].sprite = Resources.Load<Sprite>("Images/Helmets/viking-helmet");
         //        }
         //    }
 
@@ -159,19 +165,19 @@ public class SetupInventory : MonoBehaviour
         //        if (randomNumber == 1)
         //        {
         //            //Use Asset Database
-        //            Inventory[i].sprite = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/Images/Chest/pirate-coat.png", typeof(Sprite));
+        //            Inventory[i].sprite = Resources.Load<Sprite>("Images/Chest/pirate-coat");
         //        }
 
         //        if (randomNumber == 2)
         //        {
         //            //Use Asset Database
-        //            Inventory[i].sprite = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/Images/Chest/polo-shirt.png", typeof(Sprite));
+        //            Inventory[i].sprite = Resources.Load<Sprite>("Images/Chest/polo-shirt");
         //        }
 
         //        if (randomNumber == 3)
         //        {
         //            //Use Asset Database
-        //            Inventory[i].sprite = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/Images/Chest/sleeveless-jacket.png", typeof(Sprite));
+        //            Inventory[i].sprite = Resources.Load<Sprite>("Images/Chest/sleeveless-jacket");
         //        }
         //    }
 
@@ -181,13 +187,13 @@ public class SetupInventory : MonoBehaviour
         //        if (randomNumber == 1)
         //        {
         //            //Use Asset Database
-        //            Inventory[i].sprite = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/Images/Pants/shorts.png", typeof(Sprite));
+        //            Inventory[i].sprite = Resources.Load<Sprite>("Images/Pants/shorts");
         //        }
 
         //        if (randomNumber == 2)
         //        {
         //            //Use Asset Database
-        //            Inventory[i].sprite = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/Images/Pants/wooden-pegleg.png", typeof(Sprite));
+        //            Inventory[i].sprite = Resources.Load<Sprite>("Images/Pants/wooden-pegleg");
         //        }
         //    }
 
@@ -197,13 +203,13 @@ public class SetupInventory : MonoBehaviour
         //        if (randomNumber == 1)
         //        {
         //            //Use Asset Database
-        //            Inventory[i].sprite = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/Images/Shields/police-badge.png", typeof(Sprite));
+        //            Inventory[i].sprite = Resources.Load<Sprite>("Images/Shields/police-badge");
         //        }
 
         //        if (randomNumber == 2)
         //        {
         //            //Use Asset Database
-        //            Inventory[i].sprite = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/Images/Shields/templar-shield.png", typeof(Sprite));
+        //            Inventory[i].sprite = Resources.Load<Sprite>("Images/Shields/templar-shield");
         //        }
         //    }
 
@@ -213,19 +219,19 @@ public class SetupInventory : MonoBehaviour
         //        if (randomNumber == 1)
         //        {
         //            //Use Asset Database
-        //            Inventory[i].sprite = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/Images/Weapons/baseball-bat.png", typeof(Sprite));
+        //            Inventory[i].sprite = Resources.Load<Sprite>("Images/Weapons/baseball-bat");
         //        }
 
         //        if (randomNumber == 2)
         //        {
         //            //Use Asset Database
-        //            Inventory[i].sprite = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/Images/Weapons/crossbow.png", typeof(Sprite));
+        //            Inventory[i].sprite = Resources.Load<Sprite>("Images/Weapons/crossbow");
         //        }
 
         //        if (randomNumber == 3)
         //        {
         //            //Use Asset Database
-        //            Inventory[i].sprite = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/Images/Weapons/two-handed-sword.png", typeof(Sprite));
+        //            Inventory[i].sprite = Resources.Load<Sprite>("Images/Weapons/two-handed-sword");
         //        }
         //    }
 
@@ -258,31 +264,32 @@ public class SetupInventory : MonoBehaviour
             Items newItem = new Items();
             itemList.Add(newItem);
         }
+        tint = Random.Range(1, 5);
 
-        itemList[9].EnterItems(1);
+        itemList[9].EnterItems(1, tint);
         randomNumber = Random.Range(1, 5);
         if (randomNumber == 1)
         {
             //Use Asset Database
-            Equipment[0].sprite = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/Images/Helmets/brutal-helm.png", typeof(Sprite));
+            Equipment[0].sprite = Resources.Load<Sprite>("Images/Helmets/brutal-helm");
         }
 
         if (randomNumber == 2)
         {
             //Use Asset Database
-            Equipment[0].sprite = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/Images/Helmets/spartan-helmet.png", typeof(Sprite));
+            Equipment[0].sprite = Resources.Load<Sprite>("Images/Helmets/spartan-helmet");
         }
 
         if (randomNumber == 3)
         {
             //Use Asset Database
-            Equipment[0].sprite = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/Images/Helmets/turban.png", typeof(Sprite));
+            Equipment[0].sprite = Resources.Load<Sprite>("Images/Helmets/turban");
         }
 
         if (randomNumber == 4)
         {
             //Use Asset Database
-            Equipment[0].sprite = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/Images/Helmets/viking-helmet.png", typeof(Sprite));
+            Equipment[0].sprite = Resources.Load<Sprite>("Images/Helmets/viking-helmet");
         }
         if (itemList[9].tint == 0)
         {
@@ -304,24 +311,25 @@ public class SetupInventory : MonoBehaviour
         {
             Equipment[0].color = Color.magenta;
         }
-        itemList[10].EnterItems(2);
+        tint = Random.Range(1, 5);
+        itemList[10].EnterItems(2, tint);
         randomNumber = Random.Range(1, 4);
         if (randomNumber == 1)
         {
             //Use Asset Database
-            Equipment[1].sprite = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/Images/Chest/pirate-coat.png", typeof(Sprite));
+            Equipment[1].sprite = Resources.Load<Sprite>("Images/Chest/pirate-coat");
         }
 
         if (randomNumber == 2)
         {
             //Use Asset Database
-            Equipment[1].sprite = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/Images/Chest/polo-shirt.png", typeof(Sprite));
+            Equipment[1].sprite = Resources.Load<Sprite>("Images/Chest/polo-shirt");
         }
 
         if (randomNumber == 3)
         {
             //Use Asset Database
-            Equipment[1].sprite = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/Images/Chest/sleeveless-jacket.png", typeof(Sprite));
+            Equipment[1].sprite = Resources.Load<Sprite>("Images/Chest/sleeveless-jacket");
         }
         if (itemList[10].tint == 0)
         {
@@ -343,18 +351,19 @@ public class SetupInventory : MonoBehaviour
         {
             Equipment[1].color = Color.magenta;
         }
-        itemList[11].EnterItems(3);
+        tint = Random.Range(1, 5);
+        itemList[11].EnterItems(3, tint);
         randomNumber = Random.Range(1, 3);
         if (randomNumber == 1)
         {
             //Use Asset Database
-            Equipment[2].sprite = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/Images/Pants/shorts.png", typeof(Sprite));
+            Equipment[2].sprite = Resources.Load<Sprite>("Images/Pants/shorts");
         }
 
         if (randomNumber == 2)
         {
             //Use Asset Database
-            Equipment[2].sprite = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/Images/Pants/wooden-pegleg.png", typeof(Sprite));
+            Equipment[2].sprite = Resources.Load<Sprite>("Images/Pants/wooden-pegleg");
         }
         if (itemList[11].tint == 0)
         {
@@ -376,18 +385,19 @@ public class SetupInventory : MonoBehaviour
         {
             Equipment[2].color = Color.magenta;
         }
-        itemList[12].EnterItems(4);
+        tint = Random.Range(1, 5);
+        itemList[12].EnterItems(4, tint);
         randomNumber = Random.Range(1, 3);
         if (randomNumber == 1)
         {
             //Use Asset Database
-            Equipment[3].sprite = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/Images/Shields/police-badge.png", typeof(Sprite));
+            Equipment[3].sprite = Resources.Load<Sprite>("Images/Shields/police-badge");
         }
 
         if (randomNumber == 2)
         {
             //Use Asset Database
-            Equipment[3].sprite = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/Images/Shields/templar-shield.png", typeof(Sprite));
+            Equipment[3].sprite = Resources.Load<Sprite>("Images/Shields/templar-shield");
         }
         if (itemList[12].tint == 0)
         {
@@ -409,24 +419,25 @@ public class SetupInventory : MonoBehaviour
         {
             Equipment[3].color = Color.magenta;
         }
-        itemList[13].EnterItems(5);
+        tint = Random.Range(1, 5);
+        itemList[13].EnterItems(5, tint);
         randomNumber = Random.Range(1, 4);
         if (randomNumber == 1)
         {
             //Use Asset Database
-            Equipment[4].sprite = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/Images/Weapons/baseball-bat.png", typeof(Sprite));
+            Equipment[4].sprite = Resources.Load<Sprite>("Images/Weapons/baseball-bat");
         }
 
         if (randomNumber == 2)
         {
             //Use Asset Database
-            Equipment[4].sprite = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/Images/Weapons/crossbow.png", typeof(Sprite));
+            Equipment[4].sprite = Resources.Load<Sprite>("Images/Weapons/crossbow");
         }
 
         if (randomNumber == 3)
         {
             //Use Asset Database
-            Equipment[4].sprite = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/Images/Weapons/two-handed-sword.png", typeof(Sprite));
+            Equipment[4].sprite = Resources.Load<Sprite>("Images/Weapons/two-handed-sword");
         }
         if (itemList[13].tint == 0)
         {
@@ -511,50 +522,150 @@ public class SetupInventory : MonoBehaviour
     }
 
     //takes in, item, number, and tint, replacing first empty spot with that item, using the loop, once it finds an empty spot, call compress and finally break out.
-    public void PlaceItem()
+    public void PlaceItem(Sprite item, int number, int tint)
     {
-        for (int i = 0; i < Inventory.Length - 1; i++)
+        for (int i = 0; i < Inventory.Length; i++)
         {
             if (itemList[i].item == 0)
             {
-                tempSprite = Inventory[i].sprite;
-                tempColor = Inventory[i].color;
+                Inventory[i].sprite = item;
+                itemList[i].EnterItems(number, tint);
 
-                Inventory[i].sprite = Inventory[i + 1].sprite;
-                Inventory[i].color = Inventory[i + 1].color;
-
-                Inventory[i + 1].sprite = tempSprite;
-                Inventory[i + 1].color = tempColor;
-                tint = itemList[i].tint;
-
-                itemList[i].tint = itemList[i + 1].tint;
-                itemList[i + 1].tint = tint;
-                itemNumber = itemList[i].item;
-
-                itemList[i].item = itemList[i + 1].item;
-                itemList[i + 1].item = itemNumber;
+                if (itemList[i].tint == 1)
+                {
+                    Inventory[i].color = Color.blue;
+                }
+                if (itemList[i].tint == 2)
+                {
+                    Inventory[i].color = Color.green;
+                }
+                if (itemList[i].tint == 3)
+                {
+                    Inventory[i].color = Color.yellow;
+                }
+                if (itemList[i].tint == 4)
+                {
+                    Inventory[i].color = Color.magenta;
+                }
+                Compress();
+                break;
             }
         }
     }
 
     public void Place1()
     {
+        randomNumber = Random.Range(1, 5);
+        if (randomNumber == 1)
+        {
+            //Use Asset Database
+            tempSprite = Resources.Load<Sprite>("Images/Helmets/brutal-helm");
+        }
 
+        if (randomNumber == 2)
+        {
+            //Use Asset Database
+            tempSprite = Resources.Load<Sprite>("Images/Helmets/spartan-helmet");
+        }
+
+        if (randomNumber == 3)
+        {
+            //Use Asset Database
+            tempSprite = Resources.Load<Sprite>("Images/Helmets/turban");
+        }
+
+        if (randomNumber == 4)
+        {
+            //Use Asset Database
+            tempSprite = Resources.Load<Sprite>("Images/Helmets/viking-helmet");
+        }
+        itemNumber = Random.Range(1, 5);
+        tint = Random.Range(1, 5);
+        PlaceItem(tempSprite, itemNumber, tint);
     }
     public void Place2()
     {
+        randomNumber = Random.Range(1, 4);
+        if (randomNumber == 1)
+        {
+            //Use Asset Database
+            tempSprite = Resources.Load<Sprite>("Images/Chest/pirate-coat");
+        }
 
+        if (randomNumber == 2)
+        {
+            //Use Asset Database
+            tempSprite = Resources.Load<Sprite>("Images/Chest/polo-shirt");
+        }
+
+        if (randomNumber == 3)
+        {
+            //Use Asset Database
+            tempSprite = Resources.Load<Sprite>("Images/Chest/sleeveless-jacket");
+        }
+        itemNumber = Random.Range(1, 5);
+        tint = Random.Range(1, 5);
+        PlaceItem(tempSprite, itemNumber, tint);
     }
     public void Place3()
     {
+        randomNumber = Random.Range(1, 3);
+        if (randomNumber == 1)
+        {
+            //Use Asset Database
+            tempSprite = Resources.Load<Sprite>("Images/Pants/shorts");
+        }
 
+        if (randomNumber == 2)
+        {
+            //Use Asset Database
+            tempSprite = Resources.Load<Sprite>("Images/Pants/wooden-pegleg");
+        }
+        itemNumber = Random.Range(1, 5);
+        tint = Random.Range(1, 5);
+        PlaceItem(tempSprite, itemNumber, tint);
     }
     public void Place4()
-    {
 
+    {
+        randomNumber = Random.Range(1, 3);
+        if (randomNumber == 1)
+        {
+            //Use Asset Database
+            tempSprite = Resources.Load<Sprite>("Images/Shields/police-badge");
+        }
+
+        if (randomNumber == 2)
+        {
+            //Use Asset Database
+            tempSprite = Resources.Load<Sprite>("Images/Shields/templar-shield");
+        }
+        itemNumber = Random.Range(1, 5);
+        tint = Random.Range(1, 5);
+        PlaceItem(tempSprite, itemNumber, tint);
     }
     public void Place5()
     {
+        randomNumber = Random.Range(1, 4);
+        if (randomNumber == 1)
+        {
+            //Use Asset Database
+            tempSprite = Resources.Load<Sprite>("Images/Weapons/baseball-bat");
+        }
 
+        if (randomNumber == 2)
+        {
+            //Use Asset Database
+            tempSprite = Resources.Load<Sprite>("Images/Weapons/crossbow");
+        }
+
+        if (randomNumber == 3)
+        {
+            //Use Asset Database
+            tempSprite = Resources.Load<Sprite>("Images/Weapons/two-handed-sword");
+        }
+        itemNumber = Random.Range(1, 5);
+        tint = Random.Range(1, 5);
+        PlaceItem(tempSprite, itemNumber, tint);
     }
 }
