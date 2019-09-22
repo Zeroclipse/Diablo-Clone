@@ -3,10 +3,11 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEditor;
 
 public class InventoryClick : MonoBehaviour
 {
-    public int name;
+    public int nameint;
     public int tint;
     public List<Items> itemList;
     public EquipClick equip;
@@ -15,26 +16,18 @@ public class InventoryClick : MonoBehaviour
     public Image[] Inventory;
     public Image[] Equipment;
     public SetupInventory steal;
+    public int itemNumber;
 
     private AudioSource cameraAudio;
     public AudioClip selectSound;
+    public AudioClip correctSound;
     private void Awake()
     {
         steal = GetComponent<SetupInventory>();
         Inventory = steal.Inventory;
         Equipment = steal.Equipment;
         equip = GetComponent<EquipClick>();
-        itemList = new List<Items>();
-        foreach (Image item in Inventory)
-        {
-            Items newItem = new Items();
-            itemList.Add(newItem);
-        }
-        foreach (Image item in Equipment)
-        {
-            Items newItem = new Items();
-            itemList.Add(newItem);
-        }
+        itemList = steal.itemList;
         cameraAudio = this.gameObject.GetComponent<AudioSource>();
     }
     public void _SelectEquippedItem(Image button)
@@ -45,35 +38,64 @@ public class InventoryClick : MonoBehaviour
             {
                 if (Equipment[i].transform.parent.GetComponent<Image>().color == Color.red)
                 {
-                    name = Convert.ToInt32(button.gameObject.name);
+                    nameint = Convert.ToInt32(button.gameObject.name);
                     for (int j = 0; j < Inventory.Length; j++)
                     {
-                        if(itemList[j] == itemList[(name)])
+                        if (steal.itemList[j] == steal.itemList[nameint])
                         {
-                            if (itemList[j].item == itemList[i].item)
+                            if (steal.itemList[j].item == steal.itemList[i + 9].item)
                             {
                                 tempSprite = button.sprite;
                                 tempColor = button.color;
+
                                 button.sprite = Equipment[i].sprite;
                                 button.color = Equipment[i].color;
+
                                 Equipment[i].sprite = tempSprite;
                                 Equipment[i].color = tempColor;
-                                tint = itemList[j].tint;
-                                itemList[j].tint = itemList[i + 9].tint;
-                                itemList[i + 9].tint = tint;
+                                tint = steal.itemList[j].tint;
+
+                                steal.itemList[j].tint = steal.itemList[i + 9].tint;
+                                steal.itemList[i + 9].tint = tint;
+
                                 Equipment[i].transform.parent.GetComponent<Image>().color = Color.white;
+                                equip.equipSelected = false;
+                                cameraAudio.clip = correctSound;
+                                cameraAudio.Play();
                             }
-                            else if (itemList[j].item != itemList[i].item)
+                            else if (steal.itemList[j].item != steal.itemList[i + 9].item)
                             {
+                                Debug.Log(steal.itemList[j].item + " " + steal.itemList[i + 9].item);
                                 cameraAudio.clip = selectSound;
                                 cameraAudio.Play();
-
+                                equip.equipSelected = false;
                                 Equipment[i].transform.parent.GetComponent<Image>().color = Color.white;
                             }
                         }
                     }
                 }
             }
+        }
+    }
+
+    public void _DestroyInventory(Image button)
+    {
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            for (int i = 0; i < Inventory.Length; i++)
+            {
+                nameint = Convert.ToInt32(button.gameObject.name);
+                if (steal.itemList[i] == steal.itemList[nameint])
+                {
+                    Inventory[i].sprite = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/Images/annexation.png", typeof(Sprite));
+                    Inventory[i].color = Color.black;
+
+                    steal.itemList[i].tint = 0;
+
+                    steal.itemList[i].item = 0;
+                }
+            }
+            steal.Compress();
         }
     }
 }

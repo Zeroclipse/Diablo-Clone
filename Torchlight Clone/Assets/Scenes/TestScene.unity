@@ -272,7 +272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1d6f3551c706a045a71c634b1be5eb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 0
+  nameint: 0
   tint: 0
   equip: {fileID: 0}
   tempSprite: {fileID: 0}
@@ -280,7 +280,9 @@ MonoBehaviour:
   Inventory: []
   Equipment: []
   steal: {fileID: 0}
+  itemNumber: 0
   selectSound: {fileID: 8300000, guid: 191de95a77b379f468859bd64c81566a, type: 3}
+  correctSound: {fileID: 8300000, guid: 4a10604266f589b4397782a09b629ced, type: 3}
 --- !u!82 &45849445
 AudioSource:
   m_ObjectHideFlags: 0
@@ -406,6 +408,10 @@ MonoBehaviour:
   - {fileID: 1523989781}
   - {fileID: 2084701489}
   - {fileID: 1660103627}
+  tempSprite: {fileID: 0}
+  tempColor: {r: 0, g: 0, b: 0, a: 0}
+  tint: 0
+  itemNumber: 0
 --- !u!1 &108839793
 GameObject:
   m_ObjectHideFlags: 0
@@ -725,6 +731,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 1
+      - m_Target: {fileID: 45849444}
+        m_MethodName: _DestroyInventory
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1304689802}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &270235104
@@ -1097,6 +1114,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 1
+      - m_Target: {fileID: 45849444}
+        m_MethodName: _DestroyInventory
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1614110730}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &448679857
@@ -1803,6 +1831,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 1
+      - m_Target: {fileID: 45849444}
+        m_MethodName: _DestroyInventory
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1641781979}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &947468968
@@ -2095,6 +2134,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 1
+      - m_Target: {fileID: 45849444}
+        m_MethodName: _DestroyInventory
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2035871787}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1112222762
@@ -2308,6 +2358,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 1
+      - m_Target: {fileID: 45849444}
+        m_MethodName: _DestroyInventory
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 902431755}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1197265304
@@ -2508,6 +2569,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 45849444}
         m_MethodName: _SelectEquippedItem
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 943883022}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 45849444}
+        m_MethodName: _DestroyInventory
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 943883022}
@@ -3087,6 +3159,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 1
+      - m_Target: {fileID: 45849444}
+        m_MethodName: _DestroyInventory
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1643668488}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1481953208
@@ -3798,6 +3881,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 1
+      - m_Target: {fileID: 45849444}
+        m_MethodName: _DestroyInventory
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1333634660}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1626762282
@@ -4768,6 +4862,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 1
+      - m_Target: {fileID: 45849444}
+        m_MethodName: _DestroyInventory
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 314001248}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &2097067827

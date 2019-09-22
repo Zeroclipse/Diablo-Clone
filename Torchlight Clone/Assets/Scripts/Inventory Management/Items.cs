@@ -18,7 +18,6 @@ public class Items
     public void EnterItems(int itement)
     {
         item = itement;
-
         tint = Random.Range(1, 5);
     }
 }
