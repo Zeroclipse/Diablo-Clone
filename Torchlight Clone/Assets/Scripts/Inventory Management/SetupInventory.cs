@@ -15,6 +15,9 @@ public class SetupInventory : MonoBehaviour
     public int tint;
     public int itemNumber;
 
+    //Think about using this delegate when other methods want to call compressItems, maybe delete it
+    public event System.Action compressItems = delegate { };
+
     private void Awake()
     {
         itemList = new List<Items>();
@@ -125,140 +128,6 @@ public class SetupInventory : MonoBehaviour
             Inventory[2].color = Color.green;
             Inventory[3].color = Color.yellow;
             Inventory[4].color = Color.magenta;
-        // }
-        //}
-        //for (int i = 0; i < Inventory.Length; i++)
-        //{
-        //    itemList[i].EnterItems(Random.Range(1, 6));
-        //    if (itemList[i].item == 1) //Helmet
-        //    {
-        //        randomNumber = Random.Range(1, 5);
-        //        //Finish
-        //        if (randomNumber == 1)
-        //        {
-        //            //Use Asset Database
-        //            Inventory[i].sprite = Resources.Load<Sprite>("Images/Helmets/brutal-helm");
-        //        }
-
-        //        if (randomNumber == 2)
-        //        {
-        //            //Use Asset Database
-        //            Inventory[i].sprite = Resources.Load<Sprite>("Images/Helmets/spartan-helmet");
-        //        }
-
-        //        if (randomNumber == 3)
-        //        {
-        //            //Use Asset Database
-        //            Inventory[i].sprite = Resources.Load<Sprite>("Images/Helmets/turban");
-        //        }
-
-        //        if (randomNumber == 4)
-        //        {
-        //            //Use Asset Database
-        //            Inventory[i].sprite = Resources.Load<Sprite>("Images/Helmets/viking-helmet");
-        //        }
-        //    }
-
-        //    else if (itemList[i].item == 2) //Chest
-        //    {
-        //        randomNumber = Random.Range(1, 4);
-        //        if (randomNumber == 1)
-        //        {
-        //            //Use Asset Database
-        //            Inventory[i].sprite = Resources.Load<Sprite>("Images/Chest/pirate-coat");
-        //        }
-
-        //        if (randomNumber == 2)
-        //        {
-        //            //Use Asset Database
-        //            Inventory[i].sprite = Resources.Load<Sprite>("Images/Chest/polo-shirt");
-        //        }
-
-        //        if (randomNumber == 3)
-        //        {
-        //            //Use Asset Database
-        //            Inventory[i].sprite = Resources.Load<Sprite>("Images/Chest/sleeveless-jacket");
-        //        }
-        //    }
-
-        //    else if (itemList[i].item == 3) //Pants
-        //    {
-        //        randomNumber = Random.Range(1, 3);
-        //        if (randomNumber == 1)
-        //        {
-        //            //Use Asset Database
-        //            Inventory[i].sprite = Resources.Load<Sprite>("Images/Pants/shorts");
-        //        }
-
-        //        if (randomNumber == 2)
-        //        {
-        //            //Use Asset Database
-        //            Inventory[i].sprite = Resources.Load<Sprite>("Images/Pants/wooden-pegleg");
-        //        }
-        //    }
-
-        //    else if (itemList[i].item == 4) //Shield
-        //    {
-        //        randomNumber = Random.Range(1, 3);
-        //        if (randomNumber == 1)
-        //        {
-        //            //Use Asset Database
-        //            Inventory[i].sprite = Resources.Load<Sprite>("Images/Shields/police-badge");
-        //        }
-
-        //        if (randomNumber == 2)
-        //        {
-        //            //Use Asset Database
-        //            Inventory[i].sprite = Resources.Load<Sprite>("Images/Shields/templar-shield");
-        //        }
-        //    }
-
-        //    else if (itemList[i].item == 5) //Sword
-        //    {
-        //        randomNumber = Random.Range(1, 4);
-        //        if (randomNumber == 1)
-        //        {
-        //            //Use Asset Database
-        //            Inventory[i].sprite = Resources.Load<Sprite>("Images/Weapons/baseball-bat");
-        //        }
-
-        //        if (randomNumber == 2)
-        //        {
-        //            //Use Asset Database
-        //            Inventory[i].sprite = Resources.Load<Sprite>("Images/Weapons/crossbow");
-        //        }
-
-        //        if (randomNumber == 3)
-        //        {
-        //            //Use Asset Database
-        //            Inventory[i].sprite = Resources.Load<Sprite>("Images/Weapons/two-handed-sword");
-        //        }
-        //    }
-
-        //    else
-        //    {
-        //    }
-        //    if (itemList[i].tint == 0)
-        //    {
-        //        Inventory[i].color = Color.red;
-        //    }
-        //    if (itemList[i].tint == 1)
-        //    {
-        //        Inventory[i].color = Color.blue;
-        //    }
-        //    if (itemList[i].tint == 2)
-        //    {
-        //        Inventory[i].color = Color.green;
-        //    }
-        //    if (itemList[i].tint == 3)
-        //    {
-        //        Inventory[i].color = Color.yellow;
-        //    }
-        //    if (itemList[i].tint == 4)
-        //    {
-        //        Inventory[i].color = Color.magenta;
-        //    }
-        //}
         foreach (Image item in Equipment)
         {
             Items newItem = new Items();
@@ -483,44 +352,10 @@ public class SetupInventory : MonoBehaviour
 
                 itemList[i].item = itemList[i + 1].item;
                 itemList[i + 1].item = itemNumber;
-                //if (itemList[0] && itemList[i - 1].item == 0 && itemList[i].item != 0)
-                //{
-                //    i -= 2;
-                //}
             }
         }
-        //int i = 0;
-        //bool answer = false;
-        //foreach (Image item in Inventory)
-        //{
-        //    if (itemList[i].item == 0 && itemList[1].item != 0 && itemList[i] != itemsList[1])
-        //    {
-        //        answer = true;
-        //    }
-        //    else if (itemList[i].item == 0 && itemList[2].item != 0)
-        //    {
-        //        Compress();
-        //    }
-        //    else if (itemList[i].item == 0 && itemList[3].item != 0)
-        //    {
-        //        Compress();
-        //    }
-        //    i++;
-        //}
-        //if (itemList[0].item == 0 && itemList[1].item != 0)
-        //{
-        //    Compress();
-        //}
-        //else if (itemList[1].item == 0 && itemList[2].item != 0)
-        //{
-        //    Compress();
-        //}
-        //else if (itemList[1].item == 0 && itemList[2].item != 0)
-        //{
-        //    Compress();
-        //}
     }
-
+    #region Temporary Testing things
     //takes in, item, number, and tint, replacing first empty spot with that item, using the loop, once it finds an empty spot, call compress and finally break out.
     public void PlaceItem(Sprite item, int number, int tint)
     {
@@ -668,4 +503,5 @@ public class SetupInventory : MonoBehaviour
         tint = Random.Range(1, 5);
         PlaceItem(tempSprite, itemNumber, tint);
     }
+    #endregion
 }

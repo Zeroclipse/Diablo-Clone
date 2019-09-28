@@ -7,29 +7,44 @@ using UnityEditor;
 
 public class InventoryClick : MonoBehaviour
 {
-    public int nameint;
-    public int tint;
-    public List<Items> itemList;
-    public EquipClick equip;
+    #region Variables
+    private SetupInventory steal;  //Holds the SetupInventory Script
+    private EquipClick equip; //Holds the EquipClick Script
+
+    private List<Items> itemList; //Holds the entire itemList
+    private Image[] Inventory; //Holds an array of the items in the Inventory
+    private Image[] Equipment; //Holds an array of the equipment in the inventory
+
+    private int itemNumber; //The number of the item when it's picked
+    private int nameint; //The name of the button when it's picked
+    private int tint; //The tint of the item when it's picked
+
     public Sprite tempSprite;
     public Color tempColor;
-    public Image[] Inventory;
-    public Image[] Equipment;
-    public SetupInventory steal;
-    public int itemNumber;
 
-    private AudioSource cameraAudio;
-    public AudioClip selectSound;
-    public AudioClip correctSound;
+    private AudioSource cameraAudio; //Audio Source Component for the camera
+    private AudioClip failSound; //Audioclip for failure
+    private AudioClip correctSound; //Audioclip for success
+    #endregion
+    #region Setup
     private void Awake()
     {
+        //Initializes variables to their respective components
         steal = GetComponent<SetupInventory>();
+        equip = GetComponent<EquipClick>();
+        cameraAudio = GameObject.Find("Main Camera").GetComponent<AudioSource>();
+        failSound = Resources.Load<AudioClip>("Sounds/Inventory/Hit_Hurt");
+        correctSound = Resources.Load<AudioClip>("Sounds/Inventory/Blip_Select");
+    }
+    private void Start()
+    { 
+        //Initializes arrays and List to the created list from the SetupInventory Script
+        itemList = steal.itemList;
         Inventory = steal.Inventory;
         Equipment = steal.Equipment;
-        equip = GetComponent<EquipClick>();
-        itemList = steal.itemList;
-        cameraAudio = this.gameObject.GetComponent<AudioSource>();
     }
+    #endregion
+    #region Select Inventory Item
     public void _SelectEquippedItem(Image button)
     {
         if (equip.equipSelected == true)
@@ -66,7 +81,7 @@ public class InventoryClick : MonoBehaviour
                                 else if (steal.itemList[j].item != steal.itemList[i + 9].item)
                                 {
                                     Debug.Log(steal.itemList[j].item + " " + steal.itemList[i + 9].item);
-                                    cameraAudio.clip = selectSound;
+                                    cameraAudio.clip = failSound;
                                     cameraAudio.Play();
                                 }
                             }
@@ -78,28 +93,30 @@ public class InventoryClick : MonoBehaviour
             }
         }
     }
-
+    #endregion
+    #region Destroy Inventory Item
     public void _DestroyInventory(Image button)
     {
+        //If nothing is selected from the equipment side
         if (equip.equipSelected == false)
         {
+            //If left shift is being held down
             if (Input.GetKey(KeyCode.LeftShift))
             {
-                for (int i = 0; i < Inventory.Length; i++)
-                {
-                    nameint = Convert.ToInt32(button.gameObject.name);
-                    if (steal.itemList[i] == steal.itemList[nameint])
-                    {
-                        Inventory[i].sprite = Resources.Load<Sprite>("Assets/Images/annexation.png");
-                        Inventory[i].color = Color.black;
-
-                        steal.itemList[i].tint = 0;
-
-                        steal.itemList[i].item = 0;
-                    }
-                }
+                //Gets the name of the button which is a number, er the image that's a number under the button
+                int nameint = Convert.ToInt32(button.gameObject.name);
+                //Uses that int to Load the black sprite
+                Inventory[nameint].sprite = Resources.Load<Sprite>("Assets/Images/annexation.png");
+                //Changes the color to black
+                Inventory[nameint].color = Color.black;
+                //Changes the tint to 0
+                steal.itemList[nameint].tint = 0;
+                //Changes the item to 0
+                steal.itemList[nameint].item = 0;
+                //Calls the Compress method
                 steal.Compress();
             }
         }
     }
+    #endregion
 }
