@@ -32,6 +32,9 @@ public class PlayerControl : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         path = new NavMeshPath();
         lastValidMoveTarget = transform.position;
+
+        //NavMeshSurface pong;
+        //pong.BuildNavMesh();
     }
     private void Update()
     {
@@ -59,6 +62,7 @@ public class PlayerControl : MonoBehaviour
 
         if (Input.GetMouseButtonUp(LMB))
         {
+            isMouseDown = false;
             //agent.SetDestination(lastValidMoveTarget);
             NavMesh.CalculatePath(transform.position, lastValidMoveTarget, NavMesh.AllAreas, path);
             if (path.corners.Length == 0)
@@ -89,8 +93,14 @@ public class PlayerControl : MonoBehaviour
                 //Debug.Log(overlapResults[i].name);
                 if (overlapResults[i].gameObject.tag == "NoPass")
                 {
-                    lastValidMoveTarget = transform.position;
-                    canMove = false;
+                    //currentCornerIndex += 1; //This shouldn't break anything but is just expensive. You can use it, if you feel like the code's broken
+                    //if (currentCornerIndex < path.corners.Length)
+                    //{
+                    //    targetCorner = path.corners[currentCornerIndex];
+                    //    Vector3 lookPoint = targetCorner;
+                    //    lookPoint.y = transform.position.y;
+                    //    transform.LookAt(lookPoint);
+                    //}
                 }
             }
             if (canMove)
@@ -122,15 +132,18 @@ public class PlayerControl : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        if (Vector3.Distance(this.transform.position, lastValidMoveTarget) > allowedDelta)
-        {
-            Vector3 desiredPosition = this.transform.position + this.transform.forward * (Time.deltaTime * moveSpeed);
-            Vector3 bottomSphere = desiredPosition + transform.forward * forwardOffset + bottomOffset;
-            Vector3 topSphere = desiredPosition + transform.forward * forwardOffset + heightOffset;
-            Gizmos.color = Color.green;
-            Gizmos.DrawWireSphere(bottomSphere, overlapRadius);
-            Gizmos.DrawWireSphere(topSphere, overlapRadius);
-        }
+        //if (Vector3.Distance(this.transform.position, lastValidMoveTarget) > allowedDelta)
+        //{
+        //    Vector3 desiredPosition = this.transform.position + this.transform.forward * (Time.deltaTime * moveSpeed);
+        //    Vector3 bottomSphere = desiredPosition + transform.forward * forwardOffset + bottomOffset;
+        //    Vector3 topSphere = desiredPosition + transform.forward * forwardOffset + heightOffset;
+        //    Gizmos.color = Color.green;
+        //    Gizmos.DrawWireSphere(bottomSphere, overlapRadius);
+        //    Gizmos.DrawWireSphere(topSphere, overlapRadius);
+        //}
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(lastValidMoveTarget, .2f);
     }
 
     private void OnDrawGizmosSelected()
