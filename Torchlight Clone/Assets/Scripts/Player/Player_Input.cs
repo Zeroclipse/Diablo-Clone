@@ -6,6 +6,24 @@ using System;
 public class Player_Input : MonoBehaviour
 {
     #region Variables and Delegates
+    #region delete later
+    //Temporary camera things
+    [Tooltip("The Mouse Sensitivity for rotating Right and Left")]
+    public float sensitivityX;
+    [Tooltip("The Mouse Sensitivity for rotating Up and Down")]
+    public float sensitivityY;
+
+    [Tooltip("The farthest You can look down.")]
+    public float minY = -60;
+
+    [Tooltip("The farthest you can look up.")]
+    public float maxY = 60;
+
+    float rotationY = 0f;
+
+    private Vector3 cameraStartPosition;
+    private Vector3 cameraStartRotation;
+    #endregion
     //This is just to check if the inventory is open or closed
     public bool inventoryOpen; //This is permanent
 
@@ -23,6 +41,12 @@ public class Player_Input : MonoBehaviour
     //Sends when you press G, opens dungeon management things
     public event Action OnGPress = delegate { }; //Delete later
     #endregion
+
+    private void Start()
+    {
+        cameraStartPosition = Camera.main.transform.position;
+        cameraStartRotation = Camera.main.transform.localEulerAngles;
+    }
     void Update()
     {
         #region Dungeon Randomization Test
@@ -39,6 +63,8 @@ public class Player_Input : MonoBehaviour
             else
             {
                 dungeonOpen = false;
+                Camera.main.transform.position = cameraStartPosition;
+                Camera.main.transform.localEulerAngles = cameraStartRotation;
             }
         }
         #endregion
@@ -91,10 +117,45 @@ public class Player_Input : MonoBehaviour
             #endregion
         }
         #region Test things for dungeon
-        else if (dungeonOpen == true)
+        else if (dungeonOpen == true && inventoryOpen == false)
         {
             //Use this for the camera moving scripts, maybe make a method that this calls and can be commented out
+            CameraMove();
         }
         #endregion
     }
+
+    #region CameraMove
+    //Moves, rotates and changes height of the camera.
+    private void CameraMove()
+    {
+        //If tester pressed w or s buttons, camera moves forward and backwards
+        if (Input.GetButton("Vertical Movement"))
+        {
+            Camera.main.transform.position += transform.forward * Input.GetAxis("Vertical Movement") * .5f;
+        }
+        
+        //If tester pressed a or d buttons, camera moves left and right
+        if (Input.GetButton("Horizontal Movement"))
+        {
+            Camera.main.transform.position += transform.right * Input.GetAxis("Horizontal Movement") * .5f;
+        }
+
+        //If tester moves mouse, it rotates the camera
+        if (Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0)
+        {
+            float rotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * sensitivityX;
+
+            rotationY -= Input.GetAxis("Mouse Y") * sensitivityY;
+            rotationY = Mathf.Clamp(rotationY, minY, maxY);
+            Camera.main.transform.localEulerAngles = new Vector3(rotationY, rotationX, 0);
+        }
+
+        //If tester presses space or left alt, camera moves up or down
+        if (Input.GetButton("Raise/Lower Camera"))
+        {
+            Camera.main.transform.position += transform.up * Input.GetAxis("Raise/Lower Camera");
+        }
+    }
+    #endregion
 }
