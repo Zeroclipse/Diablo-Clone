@@ -23,12 +23,20 @@ public class PlayerControl : MonoBehaviour
 
     Collider[] overlapResults;
 
+    RaycastHit[] rayHits;
+
     NavMeshAgent agent;
     NavMeshPath path;
+
+    public NavMeshSurface navSurface;
+
+    Attackable attackTarget;
+    bool isMouseDown = false;
 
     private void Start()
     {
         overlapResults = new Collider[16];
+        rayHits = new RaycastHit[16];
         agent = GetComponent<NavMeshAgent>();
         path = new NavMeshPath();
         lastValidMoveTarget = transform.position;
@@ -38,44 +46,14 @@ public class PlayerControl : MonoBehaviour
     }
     private void Update()
     {
-        bool isMouseDown = false;
-        if (Input.GetMouseButton(LMB))
-        {
-            isMouseDown = true;
-            Ray mouseCast = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
+        isMouseDown = false;
+        HandleMouseDown();
+        HandleMouseUp();
+        MovePlayer();
+    }
 
-            int layerMask = ~LayerMask.GetMask("Pong") & ~LayerMask.GetMask("Ignore Raycast");
-
-            if (Physics.Raycast(mouseCast, out hit, float.PositiveInfinity, layerMask))
-            {
-                if (hit.transform.gameObject.tag != "NoPass")
-                {
-                    agent.ResetPath();
-                    Vector3 lookPoint = hit.point;
-                    lookPoint.y = transform.position.y;
-                    transform.LookAt(lookPoint);
-                    lastValidMoveTarget = hit.point;
-                }
-            }
-        } //end of checking left mouse button
-
-        if (Input.GetMouseButtonUp(LMB))
-        {
-            isMouseDown = false;
-            //agent.SetDestination(lastValidMoveTarget);
-            NavMesh.CalculatePath(transform.position, lastValidMoveTarget, NavMesh.AllAreas, path);
-            if (path.corners.Length == 0)
-            {
-                lastValidMoveTarget = transform.position;
-            }
-            else
-            {
-                targetCorner = path.corners[0];
-                currentCornerIndex = 0;
-            }
-        }
-
+    private void MovePlayer()
+    {
         if (Vector3.Distance(this.transform.position, lastValidMoveTarget) > allowedDelta && isMouseDown)
         {
             //Old Solution
@@ -88,12 +66,13 @@ public class PlayerControl : MonoBehaviour
             int count = Physics.OverlapCapsuleNonAlloc(bottomSphere, topSphere, overlapRadius, overlapResults);
 
             bool canMove = true;
-            for(int i = 0; i < count; i++)
+            for (int i = 0; i < count; i++)
             {
                 //Debug.Log(overlapResults[i].name);
                 if (overlapResults[i].gameObject.tag == "NoPass")
                 {
-                    //currentCornerIndex += 1; //This shouldn't break anything but is just expensive. You can use it, if you feel like the code's broken
+                    //This shouldn't break anything but is just expensive. You can use it, if you feel like the code's broken
+                    //currentCornerIndex += 1; 
                     //if (currentCornerIndex < path.corners.Length)
                     //{
                     //    targetCorner = path.corners[currentCornerIndex];
@@ -101,6 +80,7 @@ public class PlayerControl : MonoBehaviour
                     //    lookPoint.y = transform.position.y;
                     //    transform.LookAt(lookPoint);
                     //}
+                    //canMove = false; //This line just sucks
                 }
             }
             if (canMove)
@@ -130,6 +110,78 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
+    private void HandleMouseUp()
+    {
+        if (Input.GetMouseButtonUp(LMB))
+        {
+            isMouseDown = false;
+            //agent.SetDestination(lastValidMoveTarget);
+            NavMesh.CalculatePath(transform.position, lastValidMoveTarget, NavMesh.AllAreas, path);
+            if (path.corners.Length == 0 && attackTarget == null)
+            {
+                lastValidMoveTarget = transform.position;
+                print("Invalid Path");
+            }
+
+            else if (path.corners.Length == 0 && attackTarget != null)
+            {
+                Physics.RaycastNonAlloc(new Ray(transform.position, transform.forward), rayHits);
+
+                foreach(RaycastHit hit in rayHits)
+                {
+                    if(hit.transform.gameObject == attackTarget.gameObject)
+                    {
+                        NavMeshHit navHit;
+                        NavMesh.SamplePosition(hit.transform.position, out navHit, 3f, NavMesh.AllAreas);
+                        NavMesh.CalculatePath(transform.position, navHit.position, NavMesh.AllAreas, path);
+                        targetCorner = path.corners[0];
+                        currentCornerIndex = 0;
+                    }
+                }
+            }
+
+            else
+            {
+                targetCorner = path.corners[0];
+                currentCornerIndex = 0;
+            }
+        }
+    }
+
+    private void HandleMouseDown()
+    {
+        if (Input.GetMouseButton(LMB))
+        {
+            isMouseDown = true;
+            Ray mouseCast = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            int layerMask = ~LayerMask.GetMask("Pong") & ~LayerMask.GetMask("Ignore Raycast");
+
+            if (Physics.Raycast(mouseCast, out hit, float.PositiveInfinity, layerMask))
+            {
+                if (hit.transform.gameObject.tag != "NoPass")
+                {
+                    agent.ResetPath();
+                    attackTarget = null;
+                    Vector3 lookPoint = hit.point;
+                    lookPoint.y = transform.position.y;
+                    transform.LookAt(lookPoint);
+                    lastValidMoveTarget = hit.point;
+                }
+
+                else if (attackTarget != null)
+                {
+                    agent.ResetPath();
+                    Vector3 lookPoint = attackTarget.gameObject.transform.position;
+                    lookPoint.y = transform.position.y;
+                    transform.LookAt(lookPoint);
+                    lastValidMoveTarget = attackTarget.gameObject.transform.position;
+                }
+            }
+        } //end of checking left mouse button
+    }
+
     private void OnDrawGizmos()
     {
         //if (Vector3.Distance(this.transform.position, lastValidMoveTarget) > allowedDelta)
@@ -153,5 +205,14 @@ public class PlayerControl : MonoBehaviour
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(bottomSphere, overlapRadius);
         Gizmos.DrawWireSphere(topSphere, overlapRadius);
+    }
+
+    public void MoveAndAttack(Attackable target)
+    {
+        if (target != attackTarget)
+        {
+            attackTarget = target;
+            lastValidMoveTarget = attackTarget.gameObject.transform.position;
+        }
     }
 }
