@@ -9,6 +9,12 @@ public class PlayerControl : MonoBehaviour
     const int RMB = 1;
     const int MMB = 2;
 
+    const int MOVING = 1;
+    const int ATTACKING = 2;
+    const int IDLE = 0;
+
+    int currentMode = 0;
+
     public float allowedDelta = 0.1f;
     public float moveSpeed = 8f;
 
@@ -106,6 +112,16 @@ public class PlayerControl : MonoBehaviour
                     lookPoint.y = transform.position.y;
                     transform.LookAt(lookPoint);
                 }
+                else if (attackTarget != null)
+                {
+                    //Additional Attack code needed!!!!!!
+                    Vector3 lookPoint = attackTarget.transform.position;
+                    lookPoint.y = this.transform.position.y;
+                    this.transform.LookAt(lookPoint);
+                    //HAAAAACK
+                    attackTarget = null;
+                    currentMode = IDLE;
+                }
             }
         }
     }
@@ -129,13 +145,19 @@ public class PlayerControl : MonoBehaviour
 
                 foreach(RaycastHit hit in rayHits)
                 {
-                    if(hit.transform.gameObject == attackTarget.gameObject)
+                    if (hit.transform == null)
+                    {
+                        attackTarget = null;
+                    }
+
+                    else if(hit.transform.gameObject == attackTarget.gameObject)
                     {
                         NavMeshHit navHit;
                         NavMesh.SamplePosition(hit.transform.position, out navHit, 3f, NavMesh.AllAreas);
                         NavMesh.CalculatePath(transform.position, navHit.position, NavMesh.AllAreas, path);
                         targetCorner = path.corners[0];
                         currentCornerIndex = 0;
+                        break;
                     }
                 }
             }
@@ -158,7 +180,7 @@ public class PlayerControl : MonoBehaviour
 
             int layerMask = ~LayerMask.GetMask("Pong") & ~LayerMask.GetMask("Ignore Raycast");
 
-            if (Physics.Raycast(mouseCast, out hit, float.PositiveInfinity, layerMask))
+            if (currentMode != ATTACKING && Physics.Raycast(mouseCast, out hit, float.PositiveInfinity, layerMask))
             {
                 if (hit.transform.gameObject.tag != "NoPass")
                 {
@@ -213,6 +235,7 @@ public class PlayerControl : MonoBehaviour
         {
             attackTarget = target;
             lastValidMoveTarget = attackTarget.gameObject.transform.position;
+            currentMode = ATTACKING;
         }
     }
 }

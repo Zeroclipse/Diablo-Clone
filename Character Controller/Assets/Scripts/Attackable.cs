@@ -23,18 +23,18 @@ public class Attackable : MonoBehaviour
 
     private void OnMouseDown()
     {
-        NotifyPlayer();
+        NotifyPlayer(); 
     }
 
     private void OnMouseUp()
     {
-        NotifyPlayer();
+        //NotifyPlayer();
     }
 
     private void OnMouseOver()
     {
-        if (isMouseDown)
-            NotifyPlayer();
+        //if (isMouseDown)
+        //    NotifyPlayer();
     }
 
     void NotifyPlayer()
