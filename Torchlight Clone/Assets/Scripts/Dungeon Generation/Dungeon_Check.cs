@@ -8,6 +8,8 @@ public class Dungeon_Check : MonoBehaviour
     #region Variables
     //variable to decide what to do, open or close the dungeon
     private bool dungeonOpen = false;
+    public GameObject details;
+    public GameObject visualizers;
     //Object that holds the dungeon Screen
     [SerializeField] private GameObject dungeonScreen;
     //Variable that holds the player Input component
@@ -54,6 +56,8 @@ public class Dungeon_Check : MonoBehaviour
         //Closes the Dungeon Screen
         else
         {
+            details.SetActive(false);
+            visualizers.SetActive(false);
             dungeonScreen.SetActive(false);
             dungeonOpen = false;
         }

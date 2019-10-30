@@ -427,6 +427,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bf57f0e473540345b6ca61944353309, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  details: {fileID: 1756511890}
+  visualizers: {fileID: 961495186}
   dungeonScreen: {fileID: 1226751067}
 --- !u!114 &45849448
 MonoBehaviour:
