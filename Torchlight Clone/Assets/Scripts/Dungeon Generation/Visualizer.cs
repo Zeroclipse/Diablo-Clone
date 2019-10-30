@@ -5,8 +5,8 @@ using UnityEngine;
 public class Visualizer : MonoBehaviour
 {
     public bool firstTime = true;
-    [SerializeField] int width = 20;
-    [SerializeField] int height = 10;
+    public int width = 20;
+    public int height = 10;
     [SerializeField] GameObject floorTile;
     //[SerializeField] GameObject wallTile;
     [SerializeField] Color floorColor;

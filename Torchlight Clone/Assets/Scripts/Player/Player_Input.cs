@@ -23,6 +23,8 @@ public class Player_Input : MonoBehaviour
 
     private Vector3 cameraStartPosition;
     private Vector3 cameraStartRotation;
+
+    [SerializeField] private GameObject testInfoScreen;
     #endregion
     //This is just to check if the inventory is open or closed
     public bool inventoryOpen; //This is permanent
@@ -44,6 +46,14 @@ public class Player_Input : MonoBehaviour
 
     private void Start()
     {
+        if (inventoryOpen == false && dungeonOpen == false)
+        {
+            testInfoScreen.SetActive(true);
+        }
+        else
+        {
+            testInfoScreen.SetActive(false);
+        }
         cameraStartPosition = Camera.main.transform.position;
         cameraStartRotation = Camera.main.transform.localEulerAngles;
     }
@@ -59,9 +69,11 @@ public class Player_Input : MonoBehaviour
             if (dungeonOpen == false)
             {
                 dungeonOpen = true;
+                testInfoScreen.SetActive(false);
             }
             else
             {
+                testInfoScreen.SetActive(true);
                 dungeonOpen = false;
                 Camera.main.transform.position = cameraStartPosition;
                 Camera.main.transform.localEulerAngles = cameraStartRotation;
@@ -78,9 +90,11 @@ public class Player_Input : MonoBehaviour
             if (inventoryOpen == false)
             {
                 inventoryOpen = true;
+                testInfoScreen.SetActive(false);
             }
             else
             {
+                testInfoScreen.SetActive(true);
                 inventoryOpen = false;
             }
         }

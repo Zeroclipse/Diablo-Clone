@@ -8,6 +8,7 @@ public class Map_Randomization
     public int width;
     public int height;
     public int[] mapData;
+    public int firstRoom = 98;
 
     public void GenerateLevel()
     {
@@ -32,7 +33,7 @@ public class Map_Randomization
                     int heightMultiplier = 1;
                     for (int i = 0; i < mapData.Length; i++)
                     {
-                        if (i == 98)
+                        if (i == firstRoom)
                         {
                             mapData[i] = 3;
                             int guess = UnityEngine.Random.Range(1, 8);
