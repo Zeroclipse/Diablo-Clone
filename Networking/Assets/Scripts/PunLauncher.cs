@@ -27,6 +27,27 @@ public class PunLauncher : MonoBehaviourPunCallbacks
         }
     }
 
+    public override void OnRoomListUpdate(List<RoomInfo> roomList)
+    {
+        Dropdown dropRoomList = GameObject.Find("DropRoomList").GetComponent<Dropdown>();
+        dropRoomList.ClearOptions();
+        List<Dropdown.OptionData> opData = new List<Dropdown.OptionData>();
+
+        if (roomList.Count == 0)
+        {
+            opData.Add(new Dropdown.OptionData("NO ROOMS"));
+        }
+        else
+        {
+            foreach (RoomInfo ri in roomList)
+            {
+                opData.Add(new Dropdown.OptionData(ri.Name));
+            }
+        }
+        dropRoomList.AddOptions(opData);
+        dropRoomList.value = 0;
+    }
+
     public void SetPlayerName()
     {
         InputField playerInput = GameObject.Find("InputPlayerName").GetComponent<InputField>();
@@ -34,7 +55,10 @@ public class PunLauncher : MonoBehaviourPunCallbacks
 
         if (string.IsNullOrEmpty(tempPlayerName))
         {
-            status.text = ("Player name is empty");
+            //status.text += ("Player name is empty");
+            tempPlayerName = "Zeroclipse";
+            PhotonNetwork.NickName = tempPlayerName;
+            PlayerPrefs.SetString("PlayerName", tempPlayerName);
         }
         else
         {
@@ -49,11 +73,12 @@ public class PunLauncher : MonoBehaviourPunCallbacks
 
         if (string.IsNullOrEmpty(tempRoomName))
         {
-            status.text = ("Room name is empty");
+            status.text += ("Room name is empty");
         }
         else
         {
             roomName = tempRoomName;
+            PhotonNetwork.JoinOrCreateRoom(roomName, roomOps, null);
         }
     }
 
@@ -61,9 +86,13 @@ public class PunLauncher : MonoBehaviourPunCallbacks
     {
         if (PhotonNetwork.IsConnected)
         {
-            status.text = ("Already Connected, joining a room.");
+            status.text += ("\nAlready Connected");
             //PhotonNetwork.JoinRandomRoom();
-            PhotonNetwork.JoinOrCreateRoom(roomName, roomOps, null);
+            //PhotonNetwork.JoinOrCreateRoom(roomName, roomOps, null);
+            if (!PhotonNetwork.InLobby)
+            {
+                PhotonNetwork.JoinLobby();
+            }
         }
 
         else
@@ -75,19 +104,20 @@ public class PunLauncher : MonoBehaviourPunCallbacks
 
     public override void OnConnectedToMaster()
     {
-        status.text = ("<color=green>Connected to server</color>");
+        status.text += ("\n<color=green>Connected to server</color>");
         //PhotonNetwork.JoinRandomRoom();
-        PhotonNetwork.JoinOrCreateRoom(roomName, roomOps, null);
+        //PhotonNetwork.JoinOrCreateRoom(roomName, roomOps, null);
+        PhotonNetwork.JoinLobby();
     }
 
     public override void OnDisconnected(DisconnectCause cause)
     {
-        status.text = ("<color=red>Disconnected from server </color> : " + cause.ToString());
+        status.text += ("\n<color=red>Disconnected from server </color> : " + cause.ToString());
     }
 
     //public override void OnJoinRandomFailed(short returnCode, string message)
     //{
-    //    status.text = ("<color=red>Failed to join</color>: " + message);
+    //    status.text += ("\n<color=red>Failed to join</color>: " + message);
     //    //print(message);
     //    //RoomOptions roomsOps = new RoomOptions();
     //    //roomsOps.MaxPlayers = maxPlayers;
@@ -98,11 +128,12 @@ public class PunLauncher : MonoBehaviourPunCallbacks
 
     public override void OnJoinRoomFailed(short returnCode, string message)
     {
-        status.text = ("<color=red>Failed to join</color>: " + message);
+        status.text += ("\n<color=red>Failed to join</color>: " + message);
     }
 
     public override void OnJoinedRoom()
     {
-        status.text = ("<color=green>Joined Room</color>");
+        status.text += ("\n<color=green>Joined Room</color>");
+        PhotonNetwork.LoadLevel("Level One");
     }
 }
