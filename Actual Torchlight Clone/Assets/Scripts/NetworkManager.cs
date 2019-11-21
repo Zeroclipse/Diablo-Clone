@@ -148,6 +148,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         status.text += ("\n<color=green>You have joined the room named " + roomName + "</color>");
+        PhotonNetwork.LoadLevel("Test Room");
     }
 
     public override void OnJoinRoomFailed(short returnCode, string message)
