@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3895128724727520187}
   - component: {fileID: 3895128724727520186}
   - component: {fileID: 6130793188946335002}
+  - component: {fileID: 8329903109840993730}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -108,8 +109,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6e1edc070d6e4e428e35aca87e08272, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allowedDelta: 0.7
-  moveSpeed: 8
+  allowedDelta: 0.8
+  moveSpeed: 6
   forwardOffset: 0.28
   bottomOffset: {x: 0, y: 0, z: 0}
   heightOffset: {x: 0, y: 0, z: 0}
@@ -132,7 +133,7 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   ObservedComponents:
-  - {fileID: 3895128724727520187}
+  - {fileID: 8329903109840993730}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -146,7 +147,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 3
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -158,3 +159,18 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &8329903109840993730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3895128724727520188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0

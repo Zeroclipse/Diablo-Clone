@@ -18,6 +18,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         status = GameObject.Find("ErrorT").GetComponent<Text>();
         roomOps = new RoomOptions();
         GameObject.Find("SoloQ").GetComponent<Text>().text = "Solo Play";
+        GameObject.Find("TSolo").GetComponent<Toggle>().isOn = false;
         GameObject.Find("ConnectText").GetComponent<Text>().text = "Connect";
         GameObject.Find("NameS").GetComponent<Text>().text = "Name";
     }

@@ -5,7 +5,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine.AI;
 
-public class Character_Controller : MonoBehaviourPunCallbacks, IPunObservable
+public class Character_Controller : MonoBehaviourPunCallbacks
 {
     const int LMB = 0;
     const int RMB = 1;
@@ -43,31 +43,31 @@ public class Character_Controller : MonoBehaviourPunCallbacks, IPunObservable
     // Start is called before the first frame update
     void Start()
     {
-        //if (photonView.IsMine)
-        //{
+        if (photonView.IsMine)
+        {
             overlapResults = new Collider[16];
             rayHits = new RaycastHit[16];
             agent = GetComponent<NavMeshAgent>();
             path = new NavMeshPath();
             lastValidMoveTarget = transform.position;
-        //}
+        }
     }
 
     //// Update is called once per frame
     void Update()
     {
-        //if (photonView.IsMine)
-        //{
+        if (photonView.IsMine)
+        {
             isMouseDown = false;
             HandleMouseDown();
             HandleMouseUp();
             MovePlayer();
-        //}
+        }
     }
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    {
-        throw new System.NotImplementedException();
-    }
+    //public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    //{
+    //    throw new System.NotImplementedException();
+    //}
     private void MovePlayer()
     {
         if (Vector3.Distance(this.transform.position, lastValidMoveTarget) > allowedDelta && isMouseDown)
@@ -97,13 +97,14 @@ public class Character_Controller : MonoBehaviourPunCallbacks, IPunObservable
         {
             if (Vector3.Distance(transform.position, targetCorner) > allowedDelta)
             {
-                Debug.Log("Broken");
+                //Debug.Log("Broken: " + Vector3.Distance(transform.position, targetCorner));
                 Vector3 offset = transform.forward * (Time.deltaTime * moveSpeed);
                 transform.position += offset;
             }
 
             else
             {
+                //Debug.Log("In statement");
                 currentCornerIndex += 1;
                 if (currentCornerIndex < path.corners.Length)
                 {
@@ -112,15 +113,21 @@ public class Character_Controller : MonoBehaviourPunCallbacks, IPunObservable
                     lookPoint.y = transform.position.y;
                     transform.LookAt(lookPoint);
                 }
-                else if (attackTarget != null)
+                else
                 {
-                    //Additional Attack code needed!!!!!!
-                    Vector3 lookPoint = attackTarget.transform.position;
-                    lookPoint.y = this.transform.position.y;
-                    this.transform.LookAt(lookPoint);
-                    //HAAAAACK
-                    attackTarget = null;
-                    currentMode = IDLE;
+                    //Debug.Log("Here");
+                    targetCorner = this.transform.position;
+                    if (attackTarget != null)
+                    {
+                        //Additional Attack code needed!!!!!!
+                        Vector3 lookPoint = attackTarget.transform.position;
+                        lookPoint.y = this.transform.position.y;
+                        this.transform.LookAt(lookPoint);
+                        //HAAAAACK
+                        attackTarget.Attacked();
+                        attackTarget = null;
+                        currentMode = IDLE;
+                    }
                 }
             }
         }
@@ -136,7 +143,7 @@ public class Character_Controller : MonoBehaviourPunCallbacks, IPunObservable
             if (path.corners.Length == 0 && attackTarget == null)
             {
                 lastValidMoveTarget = transform.position;
-                print("Invalid Path");
+                //print("Invalid Path");
             }
 
             else if (path.corners.Length == 0 && attackTarget != null)
@@ -178,10 +185,12 @@ public class Character_Controller : MonoBehaviourPunCallbacks, IPunObservable
 
             int layerMask = ~LayerMask.GetMask("Pong") & ~LayerMask.GetMask("Ignore Raycast");
 
-            if (currentMode != ATTACKING && Physics.Raycast(mouseCast, out hit, float.PositiveInfinity, layerMask))
+            if (Physics.Raycast(mouseCast, out hit, float.PositiveInfinity, layerMask))
             {
                 if (hit.transform.gameObject.tag != "NoPass")
                 {
+                    currentMode = IDLE;
+                    //Debug.Log("No Pass");
                     agent.ResetPath();
                     attackTarget = null;
                     Vector3 lookPoint = hit.point;
@@ -206,7 +215,7 @@ public class Character_Controller : MonoBehaviourPunCallbacks, IPunObservable
     {
         if (target != attackTarget)
         {
-            Debug.Log("Attack Target Set");
+            //Debug.Log("Attack Target Set");
             attackTarget = target;
             lastValidMoveTarget = attackTarget.gameObject.transform.position;
             currentMode = ATTACKING;

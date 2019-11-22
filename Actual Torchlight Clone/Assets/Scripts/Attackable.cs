@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+using UnityEngine.AI;
 
-public class Attackable : MonoBehaviour
+public class Attackable : MonoBehaviourPun
 {
     const int LMB = 0;
     const int RMB = 1;
@@ -26,6 +28,10 @@ public class Attackable : MonoBehaviour
         }
         isMouseDown = Input.GetMouseButton(LMB);
     }
+    public void Attacked()
+    {
+        photonView.RPC("Die", RpcTarget.AllBufferedViaServer);
+    }
 
     private void OnMouseDown()
     {
@@ -36,5 +42,26 @@ public class Attackable : MonoBehaviour
     {
         player.MoveAndAttack(this);
         //player.Tag(this.gameObject.tag);
+    }
+
+    [PunRPC]
+    public void Die()
+    {
+        Destroy(this.gameObject);
+        //Debug.Log("Destroyed");
+    }
+
+    public void OnDestroy()
+    {
+        GameObject ground = GameObject.FindGameObjectWithTag("Ground");
+
+        if (ground != null)
+        {
+            NavMeshSurface surface = ground.GetComponent<NavMeshSurface>();
+            if (surface != null)
+            {
+                surface.UpdateNavMesh(surface.navMeshData);
+            }
+        }
     }
 }

@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Bullet
   - Barrel
+  - NoPass
+  - Ground
   layers:
   - Default
   - TransparentFX
