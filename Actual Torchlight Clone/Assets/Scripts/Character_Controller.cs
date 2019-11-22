@@ -43,26 +43,26 @@ public class Character_Controller : MonoBehaviourPunCallbacks, IPunObservable
     // Start is called before the first frame update
     void Start()
     {
-        if (photonView.IsMine)
-        {
+        //if (photonView.IsMine)
+        //{
             overlapResults = new Collider[16];
             rayHits = new RaycastHit[16];
             agent = GetComponent<NavMeshAgent>();
             path = new NavMeshPath();
             lastValidMoveTarget = transform.position;
-        }
+        //}
     }
 
     //// Update is called once per frame
     void Update()
     {
-        if (photonView.IsMine)
-        {
+        //if (photonView.IsMine)
+        //{
             isMouseDown = false;
             HandleMouseDown();
-            //HandleMouseUp();
+            HandleMouseUp();
             MovePlayer();
-        }
+        //}
     }
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
@@ -115,10 +115,6 @@ public class Character_Controller : MonoBehaviourPunCallbacks, IPunObservable
                 else if (attackTarget != null)
                 {
                     //Additional Attack code needed!!!!!!
-                    if (tag == "Barrel")
-                    {
-                        Destroy(attackTarget.gameObject);
-                    }
                     Vector3 lookPoint = attackTarget.transform.position;
                     lookPoint.y = this.transform.position.y;
                     this.transform.LookAt(lookPoint);
