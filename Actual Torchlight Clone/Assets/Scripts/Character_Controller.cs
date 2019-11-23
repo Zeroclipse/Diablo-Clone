@@ -38,18 +38,20 @@ public class Character_Controller : MonoBehaviourPunCallbacks
     NavMeshPath path;
 
     Attackable attackTarget;
-    string tag;
     bool isMouseDown = false;
+    Vector3 position;
     // Start is called before the first frame update
     void Start()
     {
         if (photonView.IsMine)
         {
+            position = new Vector3();
             overlapResults = new Collider[16];
             rayHits = new RaycastHit[16];
             agent = GetComponent<NavMeshAgent>();
             path = new NavMeshPath();
             lastValidMoveTarget = transform.position;
+            lastValidMoveTarget.y = 0;
         }
     }
 
@@ -70,7 +72,8 @@ public class Character_Controller : MonoBehaviourPunCallbacks
     //}
     private void MovePlayer()
     {
-        if (Vector3.Distance(this.transform.position, lastValidMoveTarget) > allowedDelta && isMouseDown)
+        position = new Vector3(this.transform.position.x, 0, this.transform.position.z);
+        if (Vector3.Distance(position, lastValidMoveTarget) > allowedDelta && isMouseDown)
         {
             //Old Solution
             Vector3 desiredPosition = this.transform.position + this.transform.forward * (Time.deltaTime * moveSpeed);
@@ -93,9 +96,9 @@ public class Character_Controller : MonoBehaviourPunCallbacks
                 transform.position = desiredPosition;
             }
         }
-        else if (Vector3.Distance(this.transform.position, lastValidMoveTarget) > allowedDelta && !isMouseDown)
+        else if (Vector3.Distance(position, lastValidMoveTarget) > allowedDelta && !isMouseDown)
         {
-            if (Vector3.Distance(transform.position, targetCorner) > allowedDelta)
+            if (Vector3.Distance(position, targetCorner) > allowedDelta)
             {
                 //Debug.Log("Broken: " + Vector3.Distance(transform.position, targetCorner));
                 Vector3 offset = transform.forward * (Time.deltaTime * moveSpeed);
@@ -126,6 +129,7 @@ public class Character_Controller : MonoBehaviourPunCallbacks
                         //HAAAAACK
                         attackTarget.Attacked();
                         attackTarget = null;
+                        agent.SetDestination(this.transform.position);
                         currentMode = IDLE;
                     }
                 }
@@ -139,10 +143,11 @@ public class Character_Controller : MonoBehaviourPunCallbacks
         {
             isMouseDown = false;
             agent.SetDestination(lastValidMoveTarget);
-            NavMesh.CalculatePath(transform.position, lastValidMoveTarget, NavMesh.AllAreas, path);
+            NavMesh.CalculatePath(position, lastValidMoveTarget, NavMesh.AllAreas, path);
             if (path.corners.Length == 0 && attackTarget == null)
             {
                 lastValidMoveTarget = transform.position;
+                lastValidMoveTarget.y = 0;
                 //print("Invalid Path");
             }
 
@@ -197,6 +202,7 @@ public class Character_Controller : MonoBehaviourPunCallbacks
                     lookPoint.y = transform.position.y;
                     transform.LookAt(lookPoint);
                     lastValidMoveTarget = hit.point;
+                    lastValidMoveTarget.y = 0;
                 }
 
                 else if (attackTarget != null)
@@ -206,6 +212,7 @@ public class Character_Controller : MonoBehaviourPunCallbacks
                     lookPoint.y = transform.position.y;
                     transform.LookAt(lookPoint);
                     lastValidMoveTarget = attackTarget.gameObject.transform.position;
+                    lastValidMoveTarget.y = 0;
                 }
             }
         } //end of checking left mouse button
@@ -221,18 +228,4 @@ public class Character_Controller : MonoBehaviourPunCallbacks
             currentMode = ATTACKING;
         }
     }
-
-    //public void Tag(string newTag)
-    //{
-    //    tag = newTag;
-    //}
-
-    //private void OnDrawGizmosSelected()
-    //{
-    //    Vector3 bottomSphere = transform.position + transform.forward * forwardOffset + bottomOffset;
-    //    Vector3 topSphere = transform.position + transform.forward * forwardOffset + heightOffset;
-    //    Gizmos.color = Color.green;
-    //    Gizmos.DrawWireSphere(bottomSphere, overlapRadius);
-    //    Gizmos.DrawWireSphere(topSphere, overlapRadius);
-    //}
 }

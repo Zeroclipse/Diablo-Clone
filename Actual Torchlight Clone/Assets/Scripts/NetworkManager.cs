@@ -13,6 +13,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     RoomOptions roomOps;
     Text status;
     List<RoomInfo> list;
+    bool host = false;
+    bool joinable = false;
     private void Awake()
     {
         status = GameObject.Find("ErrorT").GetComponent<Text>();
@@ -25,8 +27,11 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     private void Start()
     {
-        PhotonNetwork.GameVersion = gameVersion;
-        PhotonNetwork.ConnectUsingSettings();
+        if (PhotonNetwork.IsConnected == false)
+        {
+            PhotonNetwork.GameVersion = gameVersion;
+            PhotonNetwork.ConnectUsingSettings();
+        }
     }
 
     public override void OnConnectedToMaster()
@@ -148,12 +153,36 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
-        status.text += ("\n<color=green>You have joined the room named " + roomName + "</color>");
-        PhotonNetwork.LoadLevel("Test Room");
+        //if (host == true)
+        //{
+            status.text += ("\n<color=green>You have Joined the room named " + roomName + "</color>");
+            PhotonNetwork.LoadLevel("Test Room");
+        //}
+
+        //else if (host == false && joinable == true)
+        //{
+            //status.text += ("\n<color=green>You have Joined the room named " + roomName + "</color>");
+            //PhotonNetwork.LoadLevel("Test Room");
+        //}
+        //else
+        //{
+
+        //}
     }
 
     public override void OnJoinRoomFailed(short returnCode, string message)
     {
         status.text += ("\n<color=red>Sorry, " + roomName + " is full</color>");
     }
+    public override void OnCreatedRoom()
+    {
+        //host = true;
+        //StartCoroutine(Timer());
+    }
+
+    //IEnumerator Timer()
+    //{
+    //    yield return new WaitForSeconds(3f);
+    //    joinable = true;
+    //}
 }
