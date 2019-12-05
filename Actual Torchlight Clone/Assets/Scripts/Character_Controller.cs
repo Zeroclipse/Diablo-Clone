@@ -127,7 +127,7 @@ public class Character_Controller : MonoBehaviourPunCallbacks
                         lookPoint.y = this.transform.position.y;
                         this.transform.LookAt(lookPoint);
                         //HAAAAACK
-                        attackTarget.Attacked();
+                        //attackTarget.Attacked();
                         attackTarget = null;
                         agent.SetDestination(this.transform.position);
                         currentMode = IDLE;

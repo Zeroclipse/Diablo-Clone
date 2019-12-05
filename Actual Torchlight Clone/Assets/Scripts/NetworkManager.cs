@@ -155,14 +155,14 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         //if (host == true)
         //{
-            status.text += ("\n<color=green>You have Joined the room named " + roomName + "</color>");
-            PhotonNetwork.LoadLevel("Test Room");
+        status.text += ("\n<color=green>You have Joined the room named " + roomName + "</color>");
+        PhotonNetwork.LoadLevel("Level One");
         //}
 
         //else if (host == false && joinable == true)
         //{
-            //status.text += ("\n<color=green>You have Joined the room named " + roomName + "</color>");
-            //PhotonNetwork.LoadLevel("Test Room");
+        //status.text += ("\n<color=green>You have Joined the room named " + roomName + "</color>");
+        //PhotonNetwork.LoadLevel("Test Room");
         //}
         //else
         //{
@@ -176,6 +176,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     }
     public override void OnCreatedRoom()
     {
+        //status.text += ("\n<color=green>You have created the room named " + roomName + "</color>");
+        //PhotonNetwork.LoadLevel("Level One");
         //host = true;
         //StartCoroutine(Timer());
     }
