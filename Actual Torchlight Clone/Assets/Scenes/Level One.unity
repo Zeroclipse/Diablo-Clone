@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 132817704}
   - component: {fileID: 132817703}
   - component: {fileID: 132817706}
+  - component: {fileID: 132817707}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -221,6 +222,19 @@ MonoBehaviour:
   words: Connecting
   connectingText: {fileID: 2084642110}
   connectingCanvas: {fileID: 1894068874}
+--- !u!114 &132817707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 132817702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25a26f5f131f880498b4ff03afea1b81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraOffset: {x: 1.4991, y: -29.69997, z: -25.2145}
 --- !u!1 &225440987
 GameObject:
   m_ObjectHideFlags: 0

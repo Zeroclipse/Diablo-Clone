@@ -1,6 +1,6 @@
 @ECHO OFF
 
-git config --global user.name "Zach Kao"
-git config --global user.email "zkao@stumail.jccc.edu"
+git config --global user.name "Cody Wilcox"
+git config --global user.email "cdwilcox1999@gmail.com"
 
 PAUSE

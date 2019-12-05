@@ -40,7 +40,7 @@ public class GameStart : MonoBehaviourPunCallbacks
 
     public void SetUp(Vector3 pos)
     {
-        Debug.Log("Position");
+        ///Debug.Log("Position");
         playerPosition = pos;
     }
 }
