@@ -807,10 +807,10 @@ Transform:
   - {fileID: 3757192211598176437}
   - {fileID: 7639550501680051511}
   - {fileID: 684597398889661048}
-  - {fileID: 6598025283196523099}
-  - {fileID: 4339276163171986670}
-  - {fileID: 7988659412915425515}
-  - {fileID: 6129848155701690803}
+  - {fileID: 6939658358466740424}
+  - {fileID: 569229426482298493}
+  - {fileID: 6125758484683489912}
+  - {fileID: 7984851216749056800}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1773,7 +1773,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db3c5df2248c5584e81572725d2ff369, type: 3}
---- !u!4 &4339276163171986670 stripped
+--- !u!4 &569229426482298493 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4314021333504790565, guid: db3c5df2248c5584e81572725d2ff369,
     type: 3}
@@ -1848,7 +1848,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db3c5df2248c5584e81572725d2ff369, type: 3}
---- !u!4 &7988659412915425515 stripped
+--- !u!4 &6125758484683489912 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4314021333504790565, guid: db3c5df2248c5584e81572725d2ff369,
     type: 3}
@@ -1923,7 +1923,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db3c5df2248c5584e81572725d2ff369, type: 3}
---- !u!4 &6598025283196523099 stripped
+--- !u!4 &6939658358466740424 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4314021333504790565, guid: db3c5df2248c5584e81572725d2ff369,
     type: 3}
@@ -1998,7 +1998,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db3c5df2248c5584e81572725d2ff369, type: 3}
---- !u!4 &6129848155701690803 stripped
+--- !u!4 &7984851216749056800 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4314021333504790565, guid: db3c5df2248c5584e81572725d2ff369,
     type: 3}

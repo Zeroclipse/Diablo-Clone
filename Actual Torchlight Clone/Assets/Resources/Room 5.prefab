@@ -587,10 +587,10 @@ Transform:
   - {fileID: 4088193986099357476}
   - {fileID: 5059266755633710365}
   - {fileID: 5957509874206255292}
-  - {fileID: 7938898556597711176}
-  - {fileID: 946510145280508764}
-  - {fileID: 8079360579274623953}
-  - {fileID: 4735205576859770147}
+  - {fileID: 6193251748952187867}
+  - {fileID: 3962277606832542159}
+  - {fileID: 5458886288427440450}
+  - {fileID: 8820493288054083504}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1553,7 +1553,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db3c5df2248c5584e81572725d2ff369, type: 3}
---- !u!4 &946510145280508764 stripped
+--- !u!4 &3962277606832542159 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4314021333504790565, guid: db3c5df2248c5584e81572725d2ff369,
     type: 3}
@@ -1628,7 +1628,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db3c5df2248c5584e81572725d2ff369, type: 3}
---- !u!4 &8079360579274623953 stripped
+--- !u!4 &5458886288427440450 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4314021333504790565, guid: db3c5df2248c5584e81572725d2ff369,
     type: 3}
@@ -1703,7 +1703,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db3c5df2248c5584e81572725d2ff369, type: 3}
---- !u!4 &7938898556597711176 stripped
+--- !u!4 &6193251748952187867 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4314021333504790565, guid: db3c5df2248c5584e81572725d2ff369,
     type: 3}
@@ -1778,7 +1778,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db3c5df2248c5584e81572725d2ff369, type: 3}
---- !u!4 &4735205576859770147 stripped
+--- !u!4 &8820493288054083504 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4314021333504790565, guid: db3c5df2248c5584e81572725d2ff369,
     type: 3}

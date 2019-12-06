@@ -677,10 +677,10 @@ Transform:
   - {fileID: 5372522535741223099}
   - {fileID: 3473606032539191228}
   - {fileID: 7913641817876184290}
-  - {fileID: 562702241658728840}
-  - {fileID: 7316475694649570984}
-  - {fileID: 2165847580585863638}
-  - {fileID: 3709303084579854521}
+  - {fileID: 4328352037287813915}
+  - {fileID: 6797950998772933691}
+  - {fileID: 2724916840751381317}
+  - {fileID: 622741444622682666}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1223,7 +1223,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db3c5df2248c5584e81572725d2ff369, type: 3}
---- !u!4 &3709303084579854521 stripped
+--- !u!4 &622741444622682666 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4314021333504790565, guid: db3c5df2248c5584e81572725d2ff369,
     type: 3}
@@ -1298,7 +1298,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db3c5df2248c5584e81572725d2ff369, type: 3}
---- !u!4 &2165847580585863638 stripped
+--- !u!4 &2724916840751381317 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4314021333504790565, guid: db3c5df2248c5584e81572725d2ff369,
     type: 3}
@@ -1373,7 +1373,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db3c5df2248c5584e81572725d2ff369, type: 3}
---- !u!4 &562702241658728840 stripped
+--- !u!4 &4328352037287813915 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4314021333504790565, guid: db3c5df2248c5584e81572725d2ff369,
     type: 3}
@@ -1448,7 +1448,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db3c5df2248c5584e81572725d2ff369, type: 3}
---- !u!4 &7316475694649570984 stripped
+--- !u!4 &6797950998772933691 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4314021333504790565, guid: db3c5df2248c5584e81572725d2ff369,
     type: 3}

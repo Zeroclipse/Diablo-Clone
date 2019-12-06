@@ -5,11 +5,12 @@ using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine.AI;
 
-public class GameStart : MonoBehaviourPunCallbacks
+public class GameStart : MonoBehaviourPunCallbacks, IPunObservable
 {
     [SerializeField] GameObject playerPrefab;
     Vector3 playerPosition;
     NavMeshSurface surface;
+    public bool ready = false;
     private void Awake()
     {
         GameObject.Find("Main Camera").GetComponent<LoadingScreen>().Load();
@@ -24,8 +25,8 @@ public class GameStart : MonoBehaviourPunCallbacks
     {
         GameObject.Find("Main Camera").GetComponent<LoadingScreen>().Stop();
         GameObject.FindGameObjectWithTag("Ground").GetComponent<NavMeshSurface>().BuildNavMesh();
-        GameObject temp = PhotonNetwork.Instantiate(playerPrefab.name, playerPosition, Quaternion.identity);
-        temp.name = "Player";
+        //Debug.Log("Making Player");
+        //Debug.Log(temp.name);
     }
 
     private void Update()
@@ -40,7 +41,24 @@ public class GameStart : MonoBehaviourPunCallbacks
 
     public void SetUp(Vector3 pos)
     {
-        ///Debug.Log("Position");
-        playerPosition = pos;
+        if (PhotonNetwork.IsMasterClient)
+        {
+            playerPosition = pos;
+        }
+        GameObject temp = PhotonNetwork.Instantiate(playerPrefab.name, playerPosition, Quaternion.identity);
+        temp.name = "Player";
+        ready = true;
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            stream.SendNext(playerPosition);
+        }
+        else
+        {
+            this.playerPosition = (Vector3)stream.ReceiveNext();
+        }
     }
 }

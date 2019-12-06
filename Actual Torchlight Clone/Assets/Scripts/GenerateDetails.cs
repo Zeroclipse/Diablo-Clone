@@ -17,6 +17,7 @@ public class GenerateDetails : MonoBehaviourPunCallbacks
     private int[] location;
     private List<GameObject> objects;
     Vector3 position;
+    Vector3 finalPosition;
     private bool firstTime;
     public GameObject player;
     public GameObject boss;
@@ -83,7 +84,8 @@ public class GenerateDetails : MonoBehaviourPunCallbacks
                                         position = new Vector3(location[1], 2, location[0] - 200);
                                         if (mapData[i] == 3)
                                         {
-                                            start.SetUp(position);
+                                            finalPosition = position;
+                                            photonView.RPC("PositionSetUp", RpcTarget.AllBufferedViaServer);
                                         }
                                         else if (mapData[i] == 4)
                                         {
@@ -113,7 +115,8 @@ public class GenerateDetails : MonoBehaviourPunCallbacks
                                         position = new Vector3(location[1], 2, location[0] - 200);
                                         if (mapData[i] == 3)
                                         {
-                                            start.SetUp(position);
+                                            finalPosition = position;
+                                            photonView.RPC("PositionSetUp", RpcTarget.AllBufferedViaServer);
                                             //objects.Add(Instantiate(player, position, Quaternion.identity));
                                         }
                                         else if (mapData[i] == 4)
@@ -148,7 +151,8 @@ public class GenerateDetails : MonoBehaviourPunCallbacks
                                         position = new Vector3(location[1], 2, location[0] - 200);
                                         if (mapData[i] == 3)
                                         {
-                                            start.SetUp(position);
+                                            finalPosition = position;
+                                            photonView.RPC("PositionSetUp", RpcTarget.AllBufferedViaServer);
                                         }
                                         else if (mapData[i] == 4)
                                         {
@@ -178,7 +182,8 @@ public class GenerateDetails : MonoBehaviourPunCallbacks
                                         position = new Vector3(location[1], 2, location[0] - 200);
                                         if (mapData[i] == 3)
                                         {
-                                            start.SetUp(position);
+                                            finalPosition = position;
+                                            photonView.RPC("PositionSetUp", RpcTarget.AllBufferedViaServer);
                                         }
                                         else if (mapData[i] == 4)
                                         {
@@ -211,7 +216,8 @@ public class GenerateDetails : MonoBehaviourPunCallbacks
                                         position = new Vector3(location[1], 2, location[0] - 200);
                                         if (mapData[i] == 3)
                                         {
-                                            start.SetUp(position);
+                                            finalPosition = position;
+                                            photonView.RPC("PositionSetUp", RpcTarget.AllBufferedViaServer);
                                         }
                                         else if (mapData[i] == 4)
                                         {
@@ -241,7 +247,8 @@ public class GenerateDetails : MonoBehaviourPunCallbacks
                                         position = new Vector3(location[1], 2, location[0] - 200);
                                         if (mapData[i] == 3)
                                         {
-                                            start.SetUp(position);
+                                            finalPosition = position;
+                                            photonView.RPC("PositionSetUp", RpcTarget.AllBufferedViaServer);
                                         }
                                         else if (mapData[i] == 4)
                                         {
@@ -270,7 +277,8 @@ public class GenerateDetails : MonoBehaviourPunCallbacks
                                         position = new Vector3(location[1], 2, location[0] - 200);
                                         if (mapData[i] == 3)
                                         {
-                                            start.SetUp(position);
+                                            finalPosition = position;
+                                            photonView.RPC("PositionSetUp", RpcTarget.AllBufferedViaServer);
                                         }
                                         else if (mapData[i] == 4)
                                         {
@@ -295,7 +303,8 @@ public class GenerateDetails : MonoBehaviourPunCallbacks
                                         position = new Vector3(location[1], 2, location[0] - 200);
                                         if (mapData[i] == 3)
                                         {
-                                            start.SetUp(position);
+                                            finalPosition = position;
+                                            photonView.RPC("PositionSetUp", RpcTarget.AllBufferedViaServer);
                                         }
                                         else if (mapData[i] == 4)
                                         {
@@ -336,7 +345,8 @@ public class GenerateDetails : MonoBehaviourPunCallbacks
                                         position = new Vector3(location[1], 2, location[0] - 200);
                                         if (mapData[i] == 3)
                                         {
-                                            start.SetUp(position);
+                                            finalPosition = position;
+                                            photonView.RPC("PositionSetUp", RpcTarget.AllBufferedViaServer);
                                         }
                                         else if (mapData[i] == 4)
                                         {
@@ -366,7 +376,8 @@ public class GenerateDetails : MonoBehaviourPunCallbacks
                                         position = new Vector3(location[1], 2, location[0] - 200);
                                         if (mapData[i] == 3)
                                         {
-                                            start.SetUp(position);
+                                            finalPosition = position;
+                                            photonView.RPC("PositionSetUp", RpcTarget.AllBufferedViaServer);
                                         }
                                         else if (mapData[i] == 4)
                                         {
@@ -395,7 +406,8 @@ public class GenerateDetails : MonoBehaviourPunCallbacks
                                         position = new Vector3(location[1], 2, location[0] - 200);
                                         if (mapData[i] == 3)
                                         {
-                                            start.SetUp(position);
+                                            finalPosition = position;
+                                            photonView.RPC("PositionSetUp", RpcTarget.AllBufferedViaServer);
                                         }
                                         else if (mapData[i] == 4)
                                         {
@@ -420,7 +432,8 @@ public class GenerateDetails : MonoBehaviourPunCallbacks
                                         position = new Vector3(location[1], 2, location[0] - 200);
                                         if (mapData[i] == 3)
                                         {
-                                            start.SetUp(position);
+                                            finalPosition = position;
+                                            photonView.RPC("PositionSetUp", RpcTarget.AllBufferedViaServer);
                                         }
                                         else if (mapData[i] == 4)
                                         {
@@ -458,7 +471,8 @@ public class GenerateDetails : MonoBehaviourPunCallbacks
                                         position = new Vector3(location[1], 2, location[0] - 200);
                                         if (mapData[i] == 3)
                                         {
-                                            start.SetUp(position);
+                                            finalPosition = position;
+                                            photonView.RPC("PositionSetUp", RpcTarget.AllBufferedViaServer);
                                         }
                                         else if (mapData[i] == 4)
                                         {
@@ -483,7 +497,8 @@ public class GenerateDetails : MonoBehaviourPunCallbacks
                                         position = new Vector3(location[1], 2, location[0] - 200);
                                         if (mapData[i] == 3)
                                         {
-                                            start.SetUp(position);
+                                            finalPosition = position;
+                                            photonView.RPC("PositionSetUp", RpcTarget.AllBufferedViaServer);
                                         }
                                         else if (mapData[i] == 4)
                                         {
@@ -517,7 +532,8 @@ public class GenerateDetails : MonoBehaviourPunCallbacks
                                         position = new Vector3(location[1], 2, location[0] - 200);
                                         if (mapData[i] == 3)
                                         {
-                                            start.SetUp(position);
+                                            finalPosition = position;
+                                            photonView.RPC("PositionSetUp", RpcTarget.AllBufferedViaServer);
                                         }
                                         else if (mapData[i] == 4)
                                         {
@@ -547,5 +563,11 @@ public class GenerateDetails : MonoBehaviourPunCallbacks
                 widthMultiplier++;
             }
         }
+    }
+
+    [PunRPC]
+    public void PositionSetUp()
+    {
+        start.SetUp(finalPosition);
     }
 }

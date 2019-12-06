@@ -464,6 +464,7 @@ GameObject:
   - component: {fileID: 1550045021}
   - component: {fileID: 1550045024}
   - component: {fileID: 1550045023}
+  - component: {fileID: 1550045025}
   m_Layer: 0
   m_Name: GameMaster
   m_TagString: Untagged
@@ -485,6 +486,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 3895128724727520188, guid: 62dea5f2c482afb41b5e911d9d745779,
     type: 3}
+  ready: 0
 --- !u!4 &1550045022
 Transform:
   m_ObjectHideFlags: 0
@@ -544,6 +546,28 @@ MonoBehaviour:
   width: 20
   height: 10
   mapData: 
+--- !u!114 &1550045025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1550045020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 1550045021}
+  viewIdField: 1
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1894068874
 GameObject:
   m_ObjectHideFlags: 0
