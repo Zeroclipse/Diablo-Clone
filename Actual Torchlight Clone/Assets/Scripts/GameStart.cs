@@ -8,11 +8,12 @@ using UnityEngine.AI;
 public class GameStart : MonoBehaviourPunCallbacks, IPunObservable
 {
     [SerializeField] GameObject playerPrefab;
-    Vector3 playerPosition;
+    public Vector3 playerPosition;
     NavMeshSurface surface;
     public bool ready = false;
     private void Awake()
     {
+        surface = GameObject.FindGameObjectWithTag("Ground").GetComponent<NavMeshSurface>();
         GameObject.Find("Main Camera").GetComponent<LoadingScreen>().Load();
         if (PhotonNetwork.IsMasterClient)
         {
@@ -24,7 +25,7 @@ public class GameStart : MonoBehaviourPunCallbacks, IPunObservable
     private void Start()
     {
         GameObject.Find("Main Camera").GetComponent<LoadingScreen>().Stop();
-        GameObject.FindGameObjectWithTag("Ground").GetComponent<NavMeshSurface>().BuildNavMesh();
+        StartCoroutine(Ready());
         //Debug.Log("Making Player");
         //Debug.Log(temp.name);
     }
@@ -39,12 +40,12 @@ public class GameStart : MonoBehaviourPunCallbacks, IPunObservable
         }
     }
 
-    public void SetUp(Vector3 pos)
+    public void SetUp()
     {
-        if (PhotonNetwork.IsMasterClient)
-        {
-            playerPosition = pos;
-        }
+        surface.BuildNavMesh();
+        Debug.Log(surface.name);
+        Debug.Log("Where's the NavMesh?");
+        playerPosition = (Vector3)PhotonNetwork.CurrentRoom.CustomProperties["Players"];
         GameObject temp = PhotonNetwork.Instantiate(playerPrefab.name, playerPosition, Quaternion.identity);
         temp.name = "Player";
         ready = true;
@@ -52,13 +53,18 @@ public class GameStart : MonoBehaviourPunCallbacks, IPunObservable
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
-        if (PhotonNetwork.IsMasterClient)
+
+    }
+    public IEnumerator Ready()
+    {
+        while (PhotonNetwork.CurrentRoom.CustomProperties["Dungeon Generated"] == null)
         {
-            stream.SendNext(playerPosition);
+            yield return null;
         }
-        else
+        while ((bool)PhotonNetwork.CurrentRoom.CustomProperties["Dungeon Generated"] == false)
         {
-            this.playerPosition = (Vector3)stream.ReceiveNext();
+            yield return null;
         }
+        SetUp();
     }
 }

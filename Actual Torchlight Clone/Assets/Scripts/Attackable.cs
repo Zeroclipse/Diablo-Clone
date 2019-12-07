@@ -16,7 +16,7 @@ public class Attackable : MonoBehaviourPun
 
     private void Start()
     {
-
+        StartCoroutine(Check());
     }
 
     private void LateUpdate()
@@ -80,6 +80,7 @@ public class Attackable : MonoBehaviourPun
             yield return new WaitForEndOfFrame();
             ready = GameObject.Find("GameMaster").GetComponent<GameStart>().ready;
         }
+        SetUp();
 
     }
 }

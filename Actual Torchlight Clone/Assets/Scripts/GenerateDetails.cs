@@ -22,11 +22,15 @@ public class GenerateDetails : MonoBehaviourPunCallbacks
     public GameObject player;
     public GameObject boss;
     Quaternion rotation;
+    bool doneGenerating = false;
 
+    ExitGames.Client.Photon.Hashtable positionTable = new ExitGames.Client.Photon.Hashtable();
     public GameStart start;
 
     public void Details()
     {
+        positionTable.Add("Dungeon Generated", false);
+        PhotonNetwork.CurrentRoom.SetCustomProperties(positionTable);
         visualizer = GetComponent<Visualizer>();
         width = visualizer.width;
         height = visualizer.height;
@@ -85,7 +89,9 @@ public class GenerateDetails : MonoBehaviourPunCallbacks
                                         if (mapData[i] == 3)
                                         {
                                             finalPosition = position;
-                                            photonView.RPC("PositionSetUp", RpcTarget.AllBufferedViaServer);
+                                            positionTable.Add("Players", finalPosition);
+                                            PhotonNetwork.CurrentRoom.SetCustomProperties(positionTable);
+                                            //photonView.RPC("PositionSetUp", RpcTarget.AllBufferedViaServer);
                                         }
                                         else if (mapData[i] == 4)
                                         {
@@ -116,7 +122,9 @@ public class GenerateDetails : MonoBehaviourPunCallbacks
                                         if (mapData[i] == 3)
                                         {
                                             finalPosition = position;
-                                            photonView.RPC("PositionSetUp", RpcTarget.AllBufferedViaServer);
+                                            positionTable.Add("Players", finalPosition);
+                                            PhotonNetwork.CurrentRoom.SetCustomProperties(positionTable);
+                                            //photonView.RPC("PositionSetUp", RpcTarget.AllBufferedViaServer);
                                             //objects.Add(Instantiate(player, position, Quaternion.identity));
                                         }
                                         else if (mapData[i] == 4)
@@ -152,7 +160,9 @@ public class GenerateDetails : MonoBehaviourPunCallbacks
                                         if (mapData[i] == 3)
                                         {
                                             finalPosition = position;
-                                            photonView.RPC("PositionSetUp", RpcTarget.AllBufferedViaServer);
+                                            positionTable.Add("Players", finalPosition);
+                                            PhotonNetwork.CurrentRoom.SetCustomProperties(positionTable);
+                                            //photonView.RPC("PositionSetUp", RpcTarget.AllBufferedViaServer);
                                         }
                                         else if (mapData[i] == 4)
                                         {
@@ -183,7 +193,9 @@ public class GenerateDetails : MonoBehaviourPunCallbacks
                                         if (mapData[i] == 3)
                                         {
                                             finalPosition = position;
-                                            photonView.RPC("PositionSetUp", RpcTarget.AllBufferedViaServer);
+                                            positionTable.Add("Players", finalPosition);
+                                            PhotonNetwork.CurrentRoom.SetCustomProperties(positionTable);
+                                            //photonView.RPC("PositionSetUp", RpcTarget.AllBufferedViaServer);
                                         }
                                         else if (mapData[i] == 4)
                                         {
@@ -217,7 +229,9 @@ public class GenerateDetails : MonoBehaviourPunCallbacks
                                         if (mapData[i] == 3)
                                         {
                                             finalPosition = position;
-                                            photonView.RPC("PositionSetUp", RpcTarget.AllBufferedViaServer);
+                                            positionTable.Add("Players", finalPosition);
+                                            PhotonNetwork.CurrentRoom.SetCustomProperties(positionTable);
+                                            //photonView.RPC("PositionSetUp", RpcTarget.AllBufferedViaServer);
                                         }
                                         else if (mapData[i] == 4)
                                         {
@@ -248,7 +262,9 @@ public class GenerateDetails : MonoBehaviourPunCallbacks
                                         if (mapData[i] == 3)
                                         {
                                             finalPosition = position;
-                                            photonView.RPC("PositionSetUp", RpcTarget.AllBufferedViaServer);
+                                            positionTable.Add("Players", finalPosition);
+                                            PhotonNetwork.CurrentRoom.SetCustomProperties(positionTable);
+                                            //photonView.RPC("PositionSetUp", RpcTarget.AllBufferedViaServer);
                                         }
                                         else if (mapData[i] == 4)
                                         {
@@ -278,7 +294,9 @@ public class GenerateDetails : MonoBehaviourPunCallbacks
                                         if (mapData[i] == 3)
                                         {
                                             finalPosition = position;
-                                            photonView.RPC("PositionSetUp", RpcTarget.AllBufferedViaServer);
+                                            positionTable.Add("Players", finalPosition);
+                                            PhotonNetwork.CurrentRoom.SetCustomProperties(positionTable);
+                                            // photonView.RPC("PositionSetUp", RpcTarget.AllBufferedViaServer);
                                         }
                                         else if (mapData[i] == 4)
                                         {
@@ -304,7 +322,9 @@ public class GenerateDetails : MonoBehaviourPunCallbacks
                                         if (mapData[i] == 3)
                                         {
                                             finalPosition = position;
-                                            photonView.RPC("PositionSetUp", RpcTarget.AllBufferedViaServer);
+                                            positionTable.Add("Players", finalPosition);
+                                            PhotonNetwork.CurrentRoom.SetCustomProperties(positionTable);
+                                            //photonView.RPC("PositionSetUp", RpcTarget.AllBufferedViaServer);
                                         }
                                         else if (mapData[i] == 4)
                                         {
@@ -346,7 +366,9 @@ public class GenerateDetails : MonoBehaviourPunCallbacks
                                         if (mapData[i] == 3)
                                         {
                                             finalPosition = position;
-                                            photonView.RPC("PositionSetUp", RpcTarget.AllBufferedViaServer);
+                                            positionTable.Add("Players", finalPosition);
+                                            PhotonNetwork.CurrentRoom.SetCustomProperties(positionTable);
+                                            //photonView.RPC("PositionSetUp", RpcTarget.AllBufferedViaServer);
                                         }
                                         else if (mapData[i] == 4)
                                         {
@@ -377,7 +399,9 @@ public class GenerateDetails : MonoBehaviourPunCallbacks
                                         if (mapData[i] == 3)
                                         {
                                             finalPosition = position;
-                                            photonView.RPC("PositionSetUp", RpcTarget.AllBufferedViaServer);
+                                            positionTable.Add("Players", finalPosition);
+                                            PhotonNetwork.CurrentRoom.SetCustomProperties(positionTable);
+                                            //photonView.RPC("PositionSetUp", RpcTarget.AllBufferedViaServer);
                                         }
                                         else if (mapData[i] == 4)
                                         {
@@ -407,7 +431,9 @@ public class GenerateDetails : MonoBehaviourPunCallbacks
                                         if (mapData[i] == 3)
                                         {
                                             finalPosition = position;
-                                            photonView.RPC("PositionSetUp", RpcTarget.AllBufferedViaServer);
+                                            positionTable.Add("Players", finalPosition);
+                                            PhotonNetwork.CurrentRoom.SetCustomProperties(positionTable);
+                                            //photonView.RPC("PositionSetUp", RpcTarget.AllBufferedViaServer);
                                         }
                                         else if (mapData[i] == 4)
                                         {
@@ -433,7 +459,9 @@ public class GenerateDetails : MonoBehaviourPunCallbacks
                                         if (mapData[i] == 3)
                                         {
                                             finalPosition = position;
-                                            photonView.RPC("PositionSetUp", RpcTarget.AllBufferedViaServer);
+                                            positionTable.Add("Players", finalPosition);
+                                            PhotonNetwork.CurrentRoom.SetCustomProperties(positionTable);
+                                            //photonView.RPC("PositionSetUp", RpcTarget.AllBufferedViaServer);
                                         }
                                         else if (mapData[i] == 4)
                                         {
@@ -472,7 +500,9 @@ public class GenerateDetails : MonoBehaviourPunCallbacks
                                         if (mapData[i] == 3)
                                         {
                                             finalPosition = position;
-                                            photonView.RPC("PositionSetUp", RpcTarget.AllBufferedViaServer);
+                                            positionTable.Add("Players", finalPosition);
+                                            PhotonNetwork.CurrentRoom.SetCustomProperties(positionTable);
+                                            //photonView.RPC("PositionSetUp", RpcTarget.AllBufferedViaServer);
                                         }
                                         else if (mapData[i] == 4)
                                         {
@@ -498,7 +528,9 @@ public class GenerateDetails : MonoBehaviourPunCallbacks
                                         if (mapData[i] == 3)
                                         {
                                             finalPosition = position;
-                                            photonView.RPC("PositionSetUp", RpcTarget.AllBufferedViaServer);
+                                            positionTable.Add("Players", finalPosition);
+                                            PhotonNetwork.CurrentRoom.SetCustomProperties(positionTable);
+                                            //photonView.RPC("PositionSetUp", RpcTarget.AllBufferedViaServer);
                                         }
                                         else if (mapData[i] == 4)
                                         {
@@ -533,7 +565,9 @@ public class GenerateDetails : MonoBehaviourPunCallbacks
                                         if (mapData[i] == 3)
                                         {
                                             finalPosition = position;
-                                            photonView.RPC("PositionSetUp", RpcTarget.AllBufferedViaServer);
+                                            positionTable.Add("Players", finalPosition);
+                                            PhotonNetwork.CurrentRoom.SetCustomProperties(positionTable);
+                                            //photonView.RPC("PositionSetUp", RpcTarget.AllBufferedViaServer);
                                         }
                                         else if (mapData[i] == 4)
                                         {
@@ -563,11 +597,34 @@ public class GenerateDetails : MonoBehaviourPunCallbacks
                 widthMultiplier++;
             }
         }
+        positionTable["Dungeon Generated"] = true;
+        PhotonNetwork.CurrentRoom.SetCustomProperties(positionTable);
     }
 
-    [PunRPC]
-    public void PositionSetUp()
-    {
-        start.SetUp(finalPosition);
-    }
+    //[PunRPC]
+    //public void PositionSetUp()
+    //{
+    //    if (PhotonNetwork.CurrentRoom.CustomProperties["Players"] != null)
+    //    {
+    //        finalPosition = (Vector3)PhotonNetwork.CurrentRoom.CustomProperties["Players"];
+    //        start.SetUp(finalPosition);
+    //    }
+    //    else
+    //    {
+    //        wait();
+    //    }
+    //}
+
+    //IEnumerator wait()
+    //{
+    //    while (true)
+    //    {
+    //        yield return new WaitForEndOfFrame();
+    //        if ((Vector3)PhotonNetwork.CurrentRoom.CustomProperties["Players"] != null)
+    //        {
+    //            break;
+    //        }
+    //    }
+    //    PositionSetUp();
+    //}
 }
