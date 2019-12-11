@@ -65,6 +65,7 @@ public class GameStart : MonoBehaviourPunCallbacks, IPunObservable
         {
             yield return null;
         }
+        yield return new WaitForSeconds(3f);
         SetUp();
     }
 }
